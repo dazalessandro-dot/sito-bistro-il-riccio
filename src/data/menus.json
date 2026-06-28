@@ -1,0 +1,337 @@
+[
+  {
+    "id": "menu-01",
+    "date": "2025-10-03",
+    "title": "Schiscia di riso basmati",
+    "rawText": "Menu di oggi era 🦔🌱:\n- Schiscia di riso basmati con cavolo rosso caramellato e tofu con salsa di soia dolce\n- ⁠schiacciata di lenticchie rosse con pomodorini secchi e rosmarino\n- ⁠snickers naturale di dattero con dentro burro di arachidi e ricoperto di cioccolato fondente con un pizzico di sale",
+    "cleanDescription": "Schiscia di riso basmati, schiacciata di lenticchie rosse, snickers naturale di dattero.",
+    "dishes": [
+      {
+        "name": "Schiscia di riso basmati",
+        "type": "principale",
+        "ingredients": [],
+        "notes": "Schiscia di riso basmati con cavolo rosso caramellato e tofu con salsa di soia dolce"
+      },
+      {
+        "name": "schiacciata di lenticchie rosse",
+        "type": "contorno",
+        "ingredients": [
+          "pomodorini secchi e rosmarino"
+        ],
+        "notes": "schiacciata di lenticchie rosse con pomodorini secchi e rosmarino"
+      },
+      {
+        "name": "snickers naturale di dattero",
+        "type": "dolce",
+        "ingredients": [],
+        "notes": "snickers naturale di dattero con dentro burro di arachidi e ricoperto di cioccolato fondente con un pizzico di sale"
+      }
+    ],
+    "tags": [
+      "vegetariano",
+      "veg",
+      "dattero",
+      "bowl"
+    ],
+    "mood": null,
+    "confidence": "high"
+  },
+  {
+    "id": "menu-02",
+    "date": "2025-10-08",
+    "title": "Cous cous",
+    "rawText": "*MENU*🦔🌱\n- Principale:\nCous cous con cavolfiore e ceci speziati al forno, melograno, erbe fresche, cetriolo e pomodorini\n\nSide:\n- grissini speziati homemade\n\nDolce:\n\n- datteri ripieni di burro di arachidi ricoperti di cioccolato fondente al sale\n\nPrezzo: 5€, include tovagliolo e posata",
+    "cleanDescription": "Cous cous, grissini speziati homemade, datteri ripieni di burro di arachidi ricoperti di cioccolato fondente al sale.",
+    "dishes": [
+      {
+        "name": "Cous cous",
+        "type": "principale",
+        "ingredients": [
+          "cavolfiore e ceci",
+          "melograno",
+          "erbe",
+          "cetriolo e pomodorini"
+        ],
+        "notes": "Cous cous con cavolfiore e ceci speziati al forno, melograno, erbe fresche, cetriolo e pomodorini"
+      },
+      {
+        "name": "grissini speziati homemade",
+        "type": "contorno",
+        "ingredients": [
+          "grissini"
+        ],
+        "notes": null
+      },
+      {
+        "name": "datteri ripieni di burro di arachidi ricoperti di cioccolato fondente al sale",
+        "type": "dolce",
+        "ingredients": [],
+        "notes": null
+      }
+    ],
+    "tags": [
+      "vegetariano",
+      "dattero",
+      "bowl"
+    ],
+    "mood": null,
+    "confidence": "high"
+  },
+  {
+    "id": "menu-03",
+    "date": "2025-10-15",
+    "title": "Bowl di orzo",
+    "rawText": "*MENU*🦔🌱\nGIOVEDÌ 16 OTTOBRE\n\nPrincipale:\nBowl di orzo con zucchine, carote, Tofu mediterraneo e cavolo nero crispy\n\nSide:\nfarinata speziata con patate del Trentino e ceci\n\nDolce:\ndatteri ripieni di burro di arachidi ricoperti di cioccolato fondente al sale\n\nPrezzo: 5€, include tovagliolo e posata\nCi vediamo alle 13.15 al prato!🦔🦔🦔\n\nDA ORDINARE ENTRO LE 12.00 di domani mattina❗️❗️❗️",
+    "cleanDescription": "Bowl di orzo, farinata speziata, datteri ripieni di burro di arachidi ricoperti di cioccolato fondente al sale.",
+    "dishes": [
+      {
+        "name": "Bowl di orzo",
+        "type": "principale",
+        "ingredients": [
+          "zucchine",
+          "carote",
+          "Tofu mediterraneo e cavolo nero"
+        ],
+        "notes": "Bowl di orzo con zucchine, carote, Tofu mediterraneo e cavolo nero crispy"
+      },
+      {
+        "name": "farinata speziata",
+        "type": "contorno",
+        "ingredients": [
+          "patate del Trentino e ceci"
+        ],
+        "notes": "farinata speziata con patate del Trentino e ceci"
+      },
+      {
+        "name": "datteri ripieni di burro di arachidi ricoperti di cioccolato fondente al sale",
+        "type": "dolce",
+        "ingredients": [],
+        "notes": null
+      }
+    ],
+    "tags": [
+      "vegetariano",
+      "veg",
+      "dattero",
+      "bowl"
+    ],
+    "mood": null,
+    "confidence": "high"
+  },
+  {
+    "id": "menu-04",
+    "date": "2025-10-29",
+    "title": "stufato vegetale",
+    "rawText": "Menù di domani🦔🌱☀️\n\n- principale: stufato vegetale con patate al rosmarino fresco (dell’orto poli!!!)\n\n- ⁠side: polenta tostata speziata\n\n- ⁠dolce: datteri ripieni di burro di arachidi e ricoperto in fondente al sale\n\nPrezzo: 5€, include tovagliolo e posata\nCi vediamo alle 13.15 al prato!🦔🦔🦔\n\nDA ORDINARE ENTRO LE 12.00 di domani mattina❗️❗️❗️",
+    "cleanDescription": "stufato vegetale, polenta tostata speziata, datteri ripieni di burro di arachidi e ricoperto in fondente al sale.",
+    "dishes": [
+      {
+        "name": "stufato vegetale",
+        "type": "principale",
+        "ingredients": [
+          "patate al rosmarino"
+        ],
+        "notes": "stufato vegetale con patate al rosmarino fresco (dell’orto poli!!!)"
+      },
+      {
+        "name": "polenta tostata speziata",
+        "type": "contorno",
+        "ingredients": [
+          "polenta tostata speziata"
+        ],
+        "notes": null
+      },
+      {
+        "name": "datteri ripieni di burro di arachidi e ricoperto in fondente al sale",
+        "type": "dolce",
+        "ingredients": [],
+        "notes": null
+      }
+    ],
+    "tags": [
+      "vegetariano",
+      "veg",
+      "dattero"
+    ],
+    "mood": null,
+    "confidence": "high"
+  },
+  {
+    "id": "menu-05",
+    "date": "2025-11-05",
+    "title": "burrito veg",
+    "rawText": "Menú domani🦔🍃\n\n- primo: burrito veg con straccetti di soia e tant'altro\n\n- side: Patate speziate crispy\n\n-dolce: datteri ripieni di burro d'arachidi ricoperto in fondente al sale\n\n5€, comprende tovagliolo e forchetta in legno.\n\nCi vediamo domani!!!",
+    "cleanDescription": "burrito veg, Patate speziate crispy, datteri ripieni di burro d'arachidi ricoperto in fondente al sale.",
+    "dishes": [
+      {
+        "name": "burrito veg",
+        "type": "principale",
+        "ingredients": [
+          "straccetti di soia e tant'altro"
+        ],
+        "notes": "burrito veg con straccetti di soia e tant'altro"
+      },
+      {
+        "name": "Patate speziate crispy",
+        "type": "contorno",
+        "ingredients": [
+          "Patate speziate"
+        ],
+        "notes": null
+      },
+      {
+        "name": "datteri ripieni di burro d'arachidi ricoperto in fondente al sale",
+        "type": "dolce",
+        "ingredients": [],
+        "notes": null
+      }
+    ],
+    "tags": [
+      "vegetariano",
+      "veg",
+      "dattero"
+    ],
+    "mood": null,
+    "confidence": "high"
+  },
+  {
+    "id": "menu-06",
+    "date": "2025-11-10",
+    "title": "Settimana orientale",
+    "rawText": "*Questa settimana schiscia il mercoledì!!!*\n\nMenù 🦔🌱:\n\nSettimana con menù orientale !!🎋\n\n- primo: involtino con ripieno abbondante (tofu, carote, cavolo rosso, vermicelli noodles)\n- ⁠side: gyoza veg (ravioli cinesi) crispy\n- ⁠dolce: dattero ripieno di burro di arachidi ricoperto di fondente al sale\n\n5€ include posata (se serve) e tovagliolo.\n\nCi vediamo al prato come sempre, se piove vi faremo sapere🍂🍃\n\n🦔🌱",
+    "cleanDescription": "involtino, gyoza veg crispy, dattero ripieno di burro di arachidi ricoperto di fondente al sale.",
+    "dishes": [
+      {
+        "name": "involtino",
+        "type": "principale",
+        "ingredients": [
+          "tofu",
+          "carote",
+          "cavolo rosso",
+          "vermicelli noodles"
+        ],
+        "notes": "involtino con ripieno abbondante (tofu, carote, cavolo rosso, vermicelli noodles)"
+      },
+      {
+        "name": "gyoza veg crispy",
+        "type": "contorno",
+        "ingredients": [
+          "ravioli cinesi"
+        ],
+        "notes": "gyoza veg (ravioli cinesi) crispy"
+      },
+      {
+        "name": "dattero ripieno di burro di arachidi ricoperto di fondente al sale",
+        "type": "dolce",
+        "ingredients": [],
+        "notes": null
+      }
+    ],
+    "tags": [
+      "vegetariano",
+      "veg",
+      "dattero",
+      "orientale"
+    ],
+    "mood": "orientale",
+    "confidence": "high"
+  },
+  {
+    "id": "menu-07",
+    "date": "2025-11-27",
+    "title": "orzo fresco",
+    "rawText": "Menù 🦔🌱:\n\n- primo: orzo fresco  (scorza di limone, menta, mandorle tostate, peperoni, zucchine, carote, Tofu, ceci, cipolla)\n- ⁠side: schiacciata di lenticchie rosse, zucca e rosmarino fresco dell’orso poli)\n- ⁠dolce: dattero ripieno di burro di arachidi ricoperto di fondente al sale\n\n5€  primo e dolce\n7€ primo side e dolce\n\ninclude posata (se serve) e tovagliolo.\n\nCi vediamo al prato come sempre, se piove vi faremo sapere🍂🍃",
+    "cleanDescription": "orzo fresco, schiacciata di lenticchie rosse, zucca e rosmarino fresco dell’orso poli), dattero ripieno di burro di arachidi ricoperto di fondente al sale.",
+    "dishes": [
+      {
+        "name": "orzo fresco",
+        "type": "principale",
+        "ingredients": [
+          "limone",
+          "menta",
+          "mandorle",
+          "peperoni",
+          "zucchine",
+          "carote",
+          "Tofu",
+          "ceci",
+          "cipolla"
+        ],
+        "notes": "orzo fresco (scorza di limone, menta, mandorle tostate, peperoni, zucchine, carote, Tofu, ceci, cipolla)"
+      },
+      {
+        "name": "schiacciata di lenticchie rosse, zucca e rosmarino fresco dell’orso poli)",
+        "type": "contorno",
+        "ingredients": [
+          "schiacciata di lenticchie rosse",
+          "zucca e rosmarino dell’orso poli"
+        ],
+        "notes": null
+      },
+      {
+        "name": "dattero ripieno di burro di arachidi ricoperto di fondente al sale",
+        "type": "dolce",
+        "ingredients": [],
+        "notes": null
+      }
+    ],
+    "tags": [
+      "vegetariano",
+      "veg",
+      "dattero",
+      "bowl"
+    ],
+    "mood": null,
+    "confidence": "high"
+  },
+  {
+    "id": "menu-08",
+    "date": "2025-12-08",
+    "title": "Menu burger speciale",
+    "rawText": "Bistró questa settimana, il *giovedi*! 🦔🌱\n\nQuesto giovedì menù speciale *super burger fatti da noi megafarciti con tante patatine!!! 🍔🍟*\n\n- 5€  menu *burguer* farcito con pomodoro fresco con origano, cipolle dolci sotto aceto, salsa sriracha mayo, cipolle crispy e un patty veg fatto da noi + *dattero ripieno* di burro di arachidi ricoperto di fondente al sale\n\n-7€ menu *burguer + patatine speziate + dattero*\n\nSegnatevi!",
+    "cleanDescription": "Burger veg farcito, Patatine speziate, Dattero ripieno.",
+    "dishes": [
+      {
+        "name": "Burger veg farcito",
+        "type": "principale",
+        "ingredients": [
+          "pomodoro fresco",
+          "origano",
+          "cipolle dolci sotto aceto",
+          "salsa sriracha mayo",
+          "cipolle crispy",
+          "patty veg"
+        ],
+        "notes": "Burger farcito con pomodoro fresco con origano, cipolle dolci sotto aceto, salsa sriracha mayo, cipolle crispy e patty veg fatto in casa."
+      },
+      {
+        "name": "Patatine speziate",
+        "type": "contorno",
+        "ingredients": [
+          "patatine",
+          "spezie"
+        ],
+        "notes": null
+      },
+      {
+        "name": "Dattero ripieno",
+        "type": "dolce",
+        "ingredients": [
+          "dattero",
+          "burro di arachidi",
+          "cioccolato fondente",
+          "sale"
+        ],
+        "notes": "Dattero ripieno di burro di arachidi ricoperto di fondente al sale."
+      }
+    ],
+    "tags": [
+      "vegetariano",
+      "veg",
+      "dattero",
+      "burger"
+    ],
+    "mood": "festa",
+    "confidence": "high"
+  }
+]

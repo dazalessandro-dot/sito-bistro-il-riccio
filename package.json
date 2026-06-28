@@ -1,0 +1,15 @@
+{
+  "name": "riccio-bistro",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Sito statico per Riccio Bistro / Il Riccio.",
+  "scripts": {
+    "start": "node scripts/serve.js",
+    "extract:menus": "node scripts/extract-whatsapp-menus.js",
+    "capture:graza": "node scripts/capture-graza.js",
+    "verify": "node scripts/verify-site.js"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.61.1"
+  }
+}

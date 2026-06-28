@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Riccio Bistro: archivio curato di menu vegetariani, schiscette universitarie e ricette settimanali."
+    />
+    <title>Riccio Bistro</title>
+    <link rel="stylesheet" href="src/styles.css" />
+  </head>
+  <body class="is-landing">
+    <div class="grain" aria-hidden="true"></div>
+
+    <header class="site-header" aria-label="Navigazione principale">
+      <a class="brand-pill" href="#" aria-label="Torna alla landing">
+        <img src="public/assets/branding/riccio-mark.png" alt="" />
+        <span>Il Riccio</span>
+      </a>
+      <button class="menu-trigger" type="button" data-open-menu>
+        <span class="spark" aria-hidden="true">+</span>
+        Menu
+      </button>
+    </header>
+
+    <main id="app">
+      <section class="landing" id="landing" aria-labelledby="landing-title">
+        <div class="landing-copy">
+          <p class="eyebrow">schiscette vegetariane - poli - archivio vivo</p>
+          <h1 id="landing-title">Riccio Bistro</h1>
+          <p class="payoff">Menu settimanali, ricette e piccoli pranzi universitari messi in ordine bene.</p>
+          <button class="primary-cta" type="button" data-open-menu>
+            Apri il menu
+            <span aria-hidden="true">-></span>
+          </button>
+        </div>
+
+        <div class="landing-visual" aria-hidden="true">
+          <img class="main-logo" src="public/assets/branding/il-riccio-logo.png" alt="" />
+          <div class="plate-note note-one">orzo fresco</div>
+          <div class="plate-note note-two">dattero + sale</div>
+          <div class="plate-note note-three">giovedi?</div>
+          <div class="ingredient-dot tomato"></div>
+          <div class="ingredient-dot basil"></div>
+          <div class="ingredient-dot pasta"></div>
+        </div>
+      </section>
+
+      <section class="page page-guide" id="guida" aria-labelledby="guide-title" hidden></section>
+      <section class="page page-about" id="about" aria-labelledby="about-title" hidden></section>
+      <section class="page page-recipes" id="ricette" aria-labelledby="recipes-title" hidden></section>
+      <section class="page page-archive" id="archivio" aria-labelledby="archive-title" hidden></section>
+    </main>
+
+    <aside class="menu-overlay" aria-hidden="true" aria-label="Menu principale">
+      <div class="menu-panel" role="dialog" aria-modal="true" aria-labelledby="menu-title">
+        <div class="menu-topline">
+          <p class="eyebrow">scegli una porta</p>
+          <button class="close-menu" type="button" data-close-menu aria-label="Chiudi menu">x</button>
+        </div>
+        <h2 id="menu-title">Menu del Riccio</h2>
+        <nav class="menu-grid" aria-label="Sezioni sito">
+          <a href="#guida" data-menu-link>
+            <span>01</span>
+            <strong>Guida</strong>
+            <em>Come leggere ricette, menu e archivio.</em>
+          </a>
+          <a href="#about" data-menu-link>
+            <span>02</span>
+            <strong>About us</strong>
+            <em>Il progetto senza farlo diventare una bio infinita.</em>
+          </a>
+          <a href="#ricette" data-menu-link>
+            <span>03</span>
+            <strong>Ricette</strong>
+            <em>Card pronte per piatti, mood e ingredienti.</em>
+          </a>
+          <a href="#archivio" data-menu-link>
+            <span>04</span>
+            <strong>Archivio</strong>
+            <em>Vecchi menu WhatsApp, ripuliti bene.</em>
+          </a>
+        </nav>
+        <img class="menu-stamp" src="public/assets/branding/riccio-sticker-frame.png" alt="" />
+      </div>
+    </aside>
+
+    <script src="src/app.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "baseUrl": "http://localhost:4173",
+  "desktop": {
+    "innerHeight": 960,
+    "scrollHeight": 960,
+    "bodyClass": "is-landing"
+  },
+  "mobile": {
+    "innerHeight": 844,
+    "scrollHeight": 844,
+    "bodyClass": "is-landing"
+  }
+}

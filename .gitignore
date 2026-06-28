@@ -1,0 +1,13 @@
+.DS_Store
+node_modules/
+tmp/
+
+# Private/source material kept locally only.
+/_chat 2.txt
+/branding/
+/immagini varie/
+
+# Local logs and environment files.
+*.log
+.env
+.env.*
