@@ -19,6 +19,18 @@ Dopo l'estrazione automatica sono stati controllati i candidati principali. Sono
 
 Menu pubblicati: 8.
 
+## Uso Nel Sito
+
+- Menù della settimana: usa `menu-07` (`orzo fresco`, messaggio del 2025-11-27) come menu provvisorio per la finestra di prenotazione. E stato scelto perche e un menu reale ad alta confidenza e contiene gia la distinzione fra formula `primo + dolce 5€` e formula completa `primo + side + dolce 7€`.
+- Archivio menù: usa gli 8 menu pubblicati in `src/data/menus.json`, trasformati in schede curate con data, titolo, primo, secondo, dolce e tag.
+- Privacy: nel sito non vengono mostrati nomi, numeri, conversazioni, risposte, prenotazioni individuali o chat grezza.
+
+## Incertezze
+
+- Il menù della settimana non e collegato a un backend o a una fonte live: e un menu provvisorio basato su un annuncio reale estratto.
+- Alcune etichette `secondo` derivano dal campo `side` o `contorno` della chat, per adattarsi alla formula di prenotazione richiesta.
+- Le date sono quelle degli annunci in chat, non necessariamente la data effettiva del pranzo.
+
 ## Candidati più rilevanti
 
 - 2025-11-10 18:57:01 - score 20: *Questa settimana schiscia il mercoledì!!!*  Menù 🦔🌱:  Settimana con menù orientale !!🎋  - primo: involtino con ripieno abbondante (tofu, carote, cavolo rosso, vermice

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Riccio Bistro: archivio curato di menu vegetariani, schiscette universitarie e ricette settimanali."
+      content="Riccio Bistro: schiscette vegetariane, ricette e piccoli prodotti settimanali."
     />
     <title>Riccio Bistro</title>
     <link rel="stylesheet" href="src/styles.css" />
@@ -15,74 +15,104 @@
 
     <header class="site-header" aria-label="Navigazione principale">
       <a class="brand-pill" href="#" aria-label="Torna alla landing">
-        <img src="public/assets/branding/riccio-mark.png" alt="" />
-        <span>Il Riccio</span>
+        <svg class="home-icon" viewBox="0 0 48 42" aria-hidden="true">
+          <path d="M7 22 24 7l17 15" />
+          <path d="M13 20v16h22V20" />
+          <path d="M20 36V25h8v11" />
+        </svg>
       </a>
-      <button class="menu-trigger" type="button" data-open-menu>
-        <span class="spark" aria-hidden="true">+</span>
-        Menu
+      <button class="menu-trigger hamburger-trigger" type="button" data-open-menu aria-label="Apri menu">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
       </button>
+      <a class="shop-link" href="#prodotti">Shop</a>
     </header>
 
     <main id="app">
       <section class="landing" id="landing" aria-labelledby="landing-title">
-        <div class="landing-copy">
-          <p class="eyebrow">schiscette vegetariane - poli - archivio vivo</p>
-          <h1 id="landing-title">Riccio Bistro</h1>
-          <p class="payoff">Menu settimanali, ricette e piccoli pranzi universitari messi in ordine bene.</p>
-          <button class="primary-cta" type="button" data-open-menu>
-            Apri il menu
-            <span aria-hidden="true">-></span>
-          </button>
-        </div>
+        <div class="landing-interface">
+          <div class="landing-copy">
+            <h1 id="landing-title" class="landing-title">
+              <span>Il</span>
+              <span>Riccio</span>
+              <span class="title-bistro">Bistro</span>
+            </h1>
+            <p class="payoff">Schiscette vegetariane.</p>
+            <div class="landing-actions" aria-label="Azioni principali">
+              <button class="primary-cta" type="button" data-open-booking>Menù della settimana</button>
+              <a
+                class="primary-cta secondary-cta"
+                href="https://chat.whatsapp.com/LRM3pbsy3g77or1O9PIyKy?mode=gi_t"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Join Us
+              </a>
+            </div>
+          </div>
 
-        <div class="landing-visual" aria-hidden="true">
-          <img class="main-logo" src="public/assets/branding/il-riccio-logo.png" alt="" />
-          <div class="plate-note note-one">orzo fresco</div>
-          <div class="plate-note note-two">dattero + sale</div>
-          <div class="plate-note note-three">giovedi?</div>
-          <div class="ingredient-dot tomato"></div>
-          <div class="ingredient-dot basil"></div>
-          <div class="ingredient-dot pasta"></div>
+          <div class="landing-visual" aria-hidden="true">
+            <img
+              class="scribble-frame"
+              data-scribble-frame
+              src="public/assets/video/scribble-010.svg"
+              alt=""
+            />
+            <img class="landing-mark" src="public/assets/branding/riccio-mark.png" alt="" />
+          </div>
         </div>
       </section>
 
-      <section class="page page-guide" id="guida" aria-labelledby="guide-title" hidden></section>
+      <section class="page page-manifesto" id="manifesto" aria-labelledby="manifesto-title" hidden></section>
       <section class="page page-about" id="about" aria-labelledby="about-title" hidden></section>
       <section class="page page-recipes" id="ricette" aria-labelledby="recipes-title" hidden></section>
       <section class="page page-archive" id="archivio" aria-labelledby="archive-title" hidden></section>
+      <section class="page page-products" id="prodotti" aria-labelledby="products-title" hidden></section>
     </main>
 
     <aside class="menu-overlay" aria-hidden="true" aria-label="Menu principale">
       <div class="menu-panel" role="dialog" aria-modal="true" aria-labelledby="menu-title">
         <div class="menu-topline">
-          <p class="eyebrow">scegli una porta</p>
           <button class="close-menu" type="button" data-close-menu aria-label="Chiudi menu">x</button>
         </div>
-        <h2 id="menu-title">Menu del Riccio</h2>
+        <h2 id="menu-title" class="visually-hidden">Navigazione</h2>
         <nav class="menu-grid" aria-label="Sezioni sito">
-          <a href="#guida" data-menu-link>
+          <a href="#manifesto" data-menu-link>
             <span>01</span>
-            <strong>Guida</strong>
-            <em>Come leggere ricette, menu e archivio.</em>
+            <strong>Manifesto</strong>
           </a>
           <a href="#about" data-menu-link>
             <span>02</span>
             <strong>About us</strong>
-            <em>Il progetto senza farlo diventare una bio infinita.</em>
           </a>
           <a href="#ricette" data-menu-link>
             <span>03</span>
             <strong>Ricette</strong>
-            <em>Card pronte per piatti, mood e ingredienti.</em>
           </a>
           <a href="#archivio" data-menu-link>
             <span>04</span>
-            <strong>Archivio</strong>
-            <em>Vecchi menu WhatsApp, ripuliti bene.</em>
+            <strong>Archivio menù</strong>
           </a>
         </nav>
-        <img class="menu-stamp" src="public/assets/branding/riccio-sticker-frame.png" alt="" />
+      </div>
+    </aside>
+
+    <aside class="booking-overlay" aria-hidden="true" aria-label="Prenotazione menù">
+      <div class="booking-panel" role="dialog" aria-modal="true" aria-labelledby="booking-title">
+        <div class="menu-topline">
+          <button class="close-menu" type="button" data-close-booking aria-label="Chiudi prenotazione">x</button>
+        </div>
+        <div id="booking-content"></div>
+      </div>
+    </aside>
+
+    <aside class="recipe-overlay" aria-hidden="true" aria-label="Ricetta">
+      <div class="recipe-panel" role="dialog" aria-modal="true" aria-labelledby="recipe-title">
+        <div class="menu-topline">
+          <button class="close-menu" type="button" data-close-recipe aria-label="Chiudi ricetta">x</button>
+        </div>
+        <div id="recipe-content"></div>
       </div>
     </aside>
 

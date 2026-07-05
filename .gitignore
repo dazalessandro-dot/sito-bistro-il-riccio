@@ -5,7 +5,14 @@ tmp/
 # Private/source material kept locally only.
 /_chat 2.txt
 /branding/
+/immagini persone/
 /immagini varie/
+/interfaccia/
+/join us.txt
+/prodotti/
+/ricette/
+/tomarik-display.ttf
+/video/
 
 # Local logs and environment files.
 *.log

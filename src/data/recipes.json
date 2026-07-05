@@ -1,0 +1,159 @@
+[
+  {
+    "id": "tofu-glassato",
+    "title": "Tofu glassato",
+    "shortDescription": "Tofu croccante fuori, morbido dentro, glassato con salsa di soia, zucchero e sriracha.",
+    "intro": "Una ricetta piccola ma potente: il tofu diventa spugnoso, assorbe la salsa e in padella prende una glassa lucida, sapida e leggermente piccante.",
+    "servings": 2,
+    "image": "public/assets/recipes/tofu-glassato.webp",
+    "tag": "proteico",
+    "ingredients": [
+      "250 g tofu compatto",
+      "3 cucchiai salsa di soia",
+      "1 cucchiaio zucchero o sciroppo d'acero",
+      "1 cucchiaino sriracha",
+      "1 cucchiaio olio",
+      "1-2 cucchiai acqua, se serve",
+      "semi di sesamo, cipollotto o lime, opzionali"
+    ],
+    "steps": [
+      "Taglia il tofu a fette o cubi grandi. Congelalo per una notte, poi lascialo scongelare in frigo.",
+      "Strizzalo con delicatezza e tamponalo bene: deve perdere l'acqua in eccesso senza rompersi.",
+      "Mescola salsa di soia, zucchero, sriracha e poca acqua. Tieni la salsa fluida.",
+      "Scalda l'olio in padella e rosola il tofu su tutti i lati finché prende colore.",
+      "Abbassa leggermente il fuoco, versa la salsa e muovi il tofu finché la glassa si addensa e lo avvolge.",
+      "Finisci con sesamo, cipollotto o lime."
+    ],
+    "notes": [
+      "Il congelamento cambia la texture del tofu e lo rende più assorbente.",
+      "Quando aggiungi la glassa tieni il fuoco medio: lo zucchero deve caramellare piano, non bruciare."
+    ]
+  },
+  {
+    "id": "schiacciata-lenticchie-pomodorini",
+    "title": "Schiacciata di lenticchie e pomodorini secchi",
+    "shortDescription": "Una schiacciata dorata di lenticchie rosse, rosmarino e pomodorini secchi.",
+    "intro": "Parte da lenticchie rosse frullate fino a farina. La pastella è fluida, riposa un poco e in forno diventa una schiacciata sottile, saporita e proteica.",
+    "servings": 2,
+    "image": "public/assets/recipes/schiacciata-lenticchie-pomodorini.webp",
+    "tag": "forno",
+    "ingredients": [
+      "150 g lenticchie rosse secche",
+      "320 ml acqua",
+      "2 cucchiai olio extravergine",
+      "5-6 pomodorini secchi",
+      "1 rametto rosmarino",
+      "sale",
+      "pepe"
+    ],
+    "steps": [
+      "Frulla le lenticchie rosse secche fino a ottenere una farina fine.",
+      "Aggiungi l'acqua poco alla volta, mescolando, fino a una pastella molto fluida.",
+      "Unisci olio, sale, pepe e rosmarino tritato. Lascia riposare 20-30 minuti.",
+      "Scalda il forno a 220 °C e fodera una teglia bassa con carta forno ben oliata.",
+      "Versa la pastella in uno strato sottile e aggiungi i pomodorini secchi a pezzetti in superficie.",
+      "Cuoci 25-30 minuti, finché i bordi sono dorati e la superficie asciutta."
+    ],
+    "notes": [
+      "La pastella deve essere più liquida di quella di una torta salata: se è troppo densa, aggiungi poca acqua.",
+      "Tagliala dopo qualche minuto di riposo, quando si compatta meglio."
+    ]
+  },
+  {
+    "id": "stufato-veg-soia",
+    "title": "Stufato veg di soia",
+    "shortDescription": "Straccetti di soia cotti lentamente in un sugo denso con verdure e pomodoro.",
+    "intro": "Uno stufato semplice e ricco: la soia si idrata direttamente nel sugo e assorbe il soffritto, il pomodoro e le spezie.",
+    "servings": 2,
+    "image": "public/assets/recipes/stufato-veg-soia.webp",
+    "tag": "sugo",
+    "ingredients": [
+      "90 g straccetti di soia disidratata",
+      "1 cipolla piccola",
+      "1 carota",
+      "1 costa di sedano",
+      "1 spicchio d'aglio",
+      "1 pezzetto di zenzero fresco",
+      "1 cucchiaio concentrato di pomodoro",
+      "350 ml passata di pomodoro",
+      "200 ml acqua o brodo vegetale",
+      "2 cucchiai olio",
+      "sale",
+      "pepe",
+      "paprika o peperoncino, facoltativi"
+    ],
+    "steps": [
+      "Trita cipolla, carota, sedano, aglio e zenzero.",
+      "Scalda l'olio e fai rosolare il trito con calma, finché diventa morbido e profumato.",
+      "Aggiungi il concentrato di pomodoro e fallo tostare per un minuto.",
+      "Versa la passata e lascia insaporire 5 minuti.",
+      "Aggiungi gli straccetti di soia asciutti e metà dell'acqua o brodo. Mescola bene.",
+      "Cuoci a fuoco basso per 25-35 minuti, aggiungendo altro liquido quando il sugo si asciuga troppo.",
+      "Regola sale e pepe: il risultato deve essere denso, morbido e molto condito."
+    ],
+    "notes": [
+      "La soia assorbe molto: meglio aggiungere liquido poco per volta invece di avere un sugo acquoso.",
+      "La cottura lenta dà più sapore e rende gli straccetti meno asciutti."
+    ]
+  },
+  {
+    "id": "schiacciata-ceci-cipolle",
+    "title": "Schiacciata di ceci con cipolle sotto aceto",
+    "shortDescription": "Farinata sottile con rosmarino e cipolle rosse marinate.",
+    "intro": "Una schiacciata di ceci essenziale: pastella riposata, forno caldo, rosmarino e cipolla rossa sotto aceto per dare acidità e colore.",
+    "servings": 2,
+    "image": "public/assets/recipes/schiacciata-ceci-cipolle.webp",
+    "tag": "ceci",
+    "ingredients": [
+      "150 g farina di ceci",
+      "400 ml acqua",
+      "2 cucchiai olio extravergine",
+      "sale",
+      "pepe",
+      "rosmarino",
+      "1 cipolla rossa",
+      "2-3 cucchiai aceto",
+      "1 pizzico sale o zucchero per marinare"
+    ],
+    "steps": [
+      "Mescola farina di ceci e acqua con una frusta, togliendo i grumi.",
+      "Aggiungi un cucchiaio d'olio, sale e pepe. Lascia riposare almeno 1 ora.",
+      "Affetta sottile la cipolla rossa e condiscila con aceto e un pizzico di sale o zucchero.",
+      "Scalda il forno a 230 °C. Ungi bene una teglia bassa.",
+      "Versa la pastella in uno strato sottile. Aggiungi rosmarino e cipolla scolata.",
+      "Cuoci 25-30 minuti, finché la superficie è dorata e i bordi sono croccanti."
+    ],
+    "notes": [
+      "Il riposo aiuta la farina di ceci a idratarsi e rende la schiacciata più uniforme.",
+      "Scola la cipolla prima di metterla in teglia, così non bagna troppo la superficie."
+    ]
+  },
+  {
+    "id": "datteri-ripieni",
+    "title": "Datteri ripieni di burro di arachidi",
+    "shortDescription": "Datteri morbidi, burro di arachidi, fondente e sale grosso.",
+    "intro": "Un dolce piccolo, energetico e pieno di texture: morbido, cremoso, croccante e salato quanto basta.",
+    "servings": 2,
+    "image": "public/assets/recipes/datteri-ripieni.webp",
+    "tag": "dolce",
+    "ingredients": [
+      "6 datteri morbidi tipo Medjoul",
+      "3-4 cucchiai burro di arachidi",
+      "120 g cioccolato fondente",
+      "1 cucchiaino olio di cocco",
+      "sale grosso o fiocchi di sale"
+    ],
+    "steps": [
+      "Apri i datteri a libro senza separarli del tutto e rimuovi il nocciolo.",
+      "Farciscili con poco burro di arachidi e richiudili leggermente.",
+      "Sciogli a bagnomaria circa tre quarti del cioccolato con l'olio di cocco.",
+      "Togli dal calore e aggiungi il cioccolato rimasto tritato fine, mescolando finché si scioglie.",
+      "Immergi i datteri nel cioccolato, appoggiali su carta forno e aggiungi subito qualche cristallo di sale.",
+      "Lascia raffreddare in frigo finché la copertura è stabile."
+    ],
+    "notes": [
+      "Aggiungere cioccolato tritato fuori dal fuoco aiuta la copertura a raffreddarsi meglio e a restare più pulita.",
+      "Il sale va messo quando il cioccolato è ancora morbido, così resta attaccato."
+    ]
+  }
+]

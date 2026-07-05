@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 150" role="img" aria-labelledby="title">
+  <title id="title">Riccio Bistro icon</title>
+  <g fill="none" stroke="#609632" stroke-width="15" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M24 84c-7-25 11-49 38-43 18 4 25 18 23 35" />
+    <path d="M63 44c16-34 54-27 55 10 1 25-19 45-47 43" />
+    <path d="M111 38c24-24 58-8 53 26-4 26-28 41-55 34" />
+    <path d="M157 58c27-17 56-3 50 26-5 24-34 35-57 21" />
+    <path d="M41 91c22 26 69 25 87 1" />
+    <path d="M94 101c29 30 76 24 89-9" />
+    <path d="M57 63c27 2 55 14 77 35" />
+    <path d="M99 58c28 0 55 15 72 40" />
+  </g>
+  <g fill="none" stroke="#432817" stroke-width="11" stroke-linecap="round">
+    <path d="M202 85c11 2 19 9 25 19" />
+    <path d="M202 112c11-1 21 3 29 12" />
+  </g>
+  <circle cx="202" cy="105" r="6" fill="#432817" />
+  <ellipse cx="224" cy="83" rx="10" ry="18" fill="none" stroke="#609632" stroke-width="12" />
+</svg>

@@ -57,7 +57,7 @@ design-direction.md
 
 ## Note Di Design
 
-La landing e una copertina `100svh` non scrollabile. Il menu principale e un overlay grafico a card, non un hamburger generico. Le pagine interne sono scrollabili e organizzate come archivio/brand site.
+La landing e una copertina `100svh` non scrollabile. Il menu principale e un overlay grafico a card. Le pagine interne sono scrollabili, essenziali e pensate come piccolo brand/ricettario.
 
 La reference Graza e stata usata solo per capire energia visiva, ritmo, bottoni, menu e tono. Asset, testi, codice e layout proprietari non sono stati copiati.
 

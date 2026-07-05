@@ -21,7 +21,7 @@ async function capture(browser, name, viewport) {
   await page.locator("[data-open-menu]").last().click();
   await page.screenshot({ path: path.join(outDir, `${name}-menu.png`), fullPage: false });
 
-  for (const hash of ["guida", "about", "ricette", "archivio"]) {
+  for (const hash of ["manifesto", "about", "ricette", "archivio", "prodotti"]) {
     await page.goto(`${baseUrl}/#${hash}`, { waitUntil: "networkidle" });
     await page.waitForFunction(() => !document.body.classList.contains("is-landing"));
     await page.locator(`#${hash}:not([hidden]) h2`).waitFor({ state: "visible" });
