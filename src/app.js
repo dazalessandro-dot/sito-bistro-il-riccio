@@ -747,7 +747,7 @@ function startScribbleAnimation() {
   let frame = 0;
   let lastTick = 0;
   const frameDuration = 1000 / 18;
-  let frames = scribbleFrames;
+  let frameLayers = [];
 
   scribbleFrame.addEventListener("error", () => {
     scribbleFrame.classList.add("is-missing");
@@ -755,8 +755,9 @@ function startScribbleAnimation() {
 
   function tick(timestamp) {
     if (document.body.classList.contains("is-landing") && timestamp - lastTick > frameDuration) {
-      frame = (frame + 1) % frames.length;
-      scribbleFrame.src = frames[frame];
+      frameLayers[frame]?.classList.remove("is-active");
+      frame = (frame + 1) % frameLayers.length;
+      frameLayers[frame]?.classList.add("is-active");
       lastTick = timestamp;
     }
     window.requestAnimationFrame(tick);
@@ -767,18 +768,30 @@ function startScribbleAnimation() {
       (src) =>
         new Promise((resolve) => {
           const image = new Image();
-          image.addEventListener("load", () => resolve({ src, ok: true }), { once: true });
+          image.decoding = "async";
+          image.alt = "";
+          image.addEventListener("load", () => resolve({ image, ok: true }), { once: true });
           image.addEventListener("error", () => resolve({ src, ok: false }), { once: true });
           image.src = src;
         })
     )
   ).then((loadedFrames) => {
-    frames = loadedFrames.filter((item) => item.ok).map((item) => item.src);
-    if (!frames.length) {
+    frameLayers = loadedFrames.filter((item) => item.ok).map((item) => item.image);
+    if (!frameLayers.length) {
       scribbleFrame.classList.add("is-missing");
       return;
     }
-    scribbleFrame.src = frames[0];
+
+    const stack = document.createElement("div");
+    stack.className = "scribble-frame-stack";
+    stack.setAttribute("aria-hidden", "true");
+    frameLayers.forEach((image, index) => {
+      image.className = index === 0 ? "is-active" : "";
+      stack.append(image);
+    });
+
+    scribbleFrame.after(stack);
+    scribbleFrame.classList.add("is-layer-source");
     window.requestAnimationFrame(tick);
   });
 }
