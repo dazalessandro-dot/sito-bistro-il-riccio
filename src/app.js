@@ -1,7 +1,8 @@
-import { gsap } from "../node_modules/gsap/index.js";
-import { ScrollTrigger } from "../node_modules/gsap/ScrollTrigger.js";
+const { gsap, ScrollTrigger } = window;
 
-gsap.registerPlugin(ScrollTrigger);
+if (gsap && ScrollTrigger) {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 const pages = ["manifesto", "about", "ricette", "archivio", "prodotti"];
 const overlay = document.querySelector(".menu-overlay");
@@ -293,6 +294,8 @@ function destroyManifestoAnimation() {
 }
 
 function setupManifestoAnimation() {
+  if (!gsap || !ScrollTrigger) return;
+
   const section = document.querySelector("[data-manifesto-animation]");
   if (!section || section.closest("[hidden]")) return;
 
