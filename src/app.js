@@ -419,13 +419,13 @@ function renderManifesto() {
               />
               <img
                 class="manifesto-brain"
-                src="branding/riccio.png"
+                src="public/assets/interface/manifesto-brain.png"
                 alt=""
                 decoding="async"
               />
               <img
                 class="manifesto-logo-full"
-                src="branding/IMG_9878.PNG"
+                src="public/assets/branding/il-riccio-logo.png"
                 alt=""
                 decoding="async"
               />
@@ -744,29 +744,43 @@ function startScribbleAnimation() {
     return;
   }
 
-  scribbleFrames.forEach((src) => {
-    const image = new Image();
-    image.src = src;
-  });
-
   let frame = 0;
   let lastTick = 0;
   const frameDuration = 1000 / 18;
+  let frames = scribbleFrames;
 
   scribbleFrame.addEventListener("error", () => {
     scribbleFrame.classList.add("is-missing");
   });
 
   function tick(timestamp) {
-    if (timestamp - lastTick > frameDuration) {
-      frame = (frame + 1) % scribbleFrames.length;
-      scribbleFrame.src = scribbleFrames[frame];
+    if (document.body.classList.contains("is-landing") && timestamp - lastTick > frameDuration) {
+      frame = (frame + 1) % frames.length;
+      scribbleFrame.src = frames[frame];
       lastTick = timestamp;
     }
     window.requestAnimationFrame(tick);
   }
 
-  window.requestAnimationFrame(tick);
+  Promise.all(
+    scribbleFrames.map(
+      (src) =>
+        new Promise((resolve) => {
+          const image = new Image();
+          image.addEventListener("load", () => resolve({ src, ok: true }), { once: true });
+          image.addEventListener("error", () => resolve({ src, ok: false }), { once: true });
+          image.src = src;
+        })
+    )
+  ).then((loadedFrames) => {
+    frames = loadedFrames.filter((item) => item.ok).map((item) => item.src);
+    if (!frames.length) {
+      scribbleFrame.classList.add("is-missing");
+      return;
+    }
+    scribbleFrame.src = frames[0];
+    window.requestAnimationFrame(tick);
+  });
 }
 
 openButtons.forEach((button) => button.addEventListener("click", openMenu));
