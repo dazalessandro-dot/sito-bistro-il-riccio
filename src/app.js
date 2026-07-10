@@ -1,3 +1,8 @@
+import { gsap } from "../node_modules/gsap/index.js";
+import { ScrollTrigger } from "../node_modules/gsap/ScrollTrigger.js";
+
+gsap.registerPlugin(ScrollTrigger);
+
 const pages = ["manifesto", "about", "ricette", "archivio", "prodotti"];
 const overlay = document.querySelector(".menu-overlay");
 const bookingOverlay = document.querySelector(".booking-overlay");
@@ -6,10 +11,13 @@ const openBookingButtons = document.querySelectorAll("[data-open-booking]");
 const closeButton = document.querySelector("[data-close-menu]");
 const closeBookingButton = document.querySelector("[data-close-booking]");
 const closeRecipeButton = document.querySelector("[data-close-recipe]");
+const closeProductButton = document.querySelector("[data-close-product]");
 const menuLinks = document.querySelectorAll("[data-menu-link]");
 const bookingContent = document.querySelector("#booking-content");
 const recipeOverlay = document.querySelector(".recipe-overlay");
 const recipeContent = document.querySelector("#recipe-content");
+const productOverlay = document.querySelector(".product-overlay");
+const productOrderContent = document.querySelector("#product-order-content");
 const productReservations = new Map();
 const scribbleFrame = document.querySelector("[data-scribble-frame]");
 const scribbleFrames = Array.from(
@@ -100,63 +108,93 @@ const menuArchive = [
 
 const products = [
   {
+    id: "spicy-oil",
     name: "Spicy Oil",
     description:
       "Peperoncini dell'orto condiviso del Politecnico, senza pesticidi e raccolti seguendo il ciclo lunare, infusi in olio extravergine da un orto biodinamico in Andalusia.",
     category: "condimento",
     format: "300 ml",
     price: "10 €",
-    logo: "public/assets/products/spicy-oil-clean.jpg",
+    logo: "public/assets/products/spicy-oil-clean.png",
+    type: "oil",
+    bg: "#f7f7f9",
   },
   {
+    id: "sundried-tomato-oil",
     name: "Sundried Tomato Oil",
     description:
       "Olio spagnolo profumato con pomodorini essiccati da noi ed erbe aromatiche. Rosso, lento, da versare a gocce.",
     category: "condimento",
     format: "300 ml",
     price: "10 €",
-    logo: "public/assets/products/sundried-tomato-oil-clean.jpg",
+    logo: "public/assets/products/sundried-tomato-oil-clean.png",
+    type: "oil",
+    bg: "#f2f0f3",
   },
   {
+    id: "iced-tea",
     name: "Iced Tea",
     description:
       "Una bevanda nata dal viaggio in Assam: tè, zenzero, freschezza e nessuno zucchero aggiunto.",
     category: "drink",
     format: "200 ml",
     price: "3 €",
-    logo: "public/assets/products/iced-tea-clean.jpg",
+    logo: "public/assets/products/iced-tea-clean.png",
+    type: "tea",
+    bg: "#f8f6f7",
   },
   {
+    id: "pickled-onions",
     name: "Pickled Onions",
     description:
       "Il condimento signature delle schisce: cipolle con aceto, cannella e chiodi di garofano per acidità, colore e croccantezza.",
     category: "jar",
     format: "400 ml",
     price: "5 €",
-    logo: "public/assets/products/pickled-onions-clean.jpg",
+    logo: "public/assets/products/pickled-onions-clean.png",
+    type: "jar",
+    bg: "#f9f9fb",
   },
   {
+    id: "dattero-ripieno",
     name: "Dattero Ripieno",
     description:
       "Un dattero con burro di arachidi, fondente e sale grosso. Il finale dolce che basta da solo a rimettere il pomeriggio nel mood giusto.",
     category: "dolce",
     format: "5 pezzi",
     price: "4 €",
-    logo: "public/assets/products/dattero-ripieno-clean.jpg",
+    logo: "public/assets/products/dattero-ripieno-clean.png",
+    type: "dates",
+    bg: "#f7f7f7",
   },
 ];
 
 let recipes = [];
+let activeProduct = null;
+let productQuantity = 1;
+let manifestoAnimationContext = null;
+
+const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+function syncOverlayLock() {
+  const isOpen =
+    overlay.classList.contains("is-open") ||
+    bookingOverlay.classList.contains("is-open") ||
+    recipeOverlay.classList.contains("is-open") ||
+    productOverlay.classList.contains("is-open");
+  document.body.classList.toggle("has-modal-open", isOpen);
+}
 
 function openMenu() {
   overlay.classList.add("is-open");
   overlay.setAttribute("aria-hidden", "false");
   closeButton.focus();
+  syncOverlayLock();
 }
 
 function closeMenu() {
   overlay.classList.remove("is-open");
   overlay.setAttribute("aria-hidden", "true");
+  syncOverlayLock();
 }
 
 function openBooking() {
@@ -165,11 +203,13 @@ function openBooking() {
   bookingOverlay.setAttribute("aria-hidden", "false");
   bookingOverlay.querySelector(".booking-panel").scrollTop = 0;
   closeBookingButton.focus();
+  syncOverlayLock();
 }
 
 function closeBooking() {
   bookingOverlay.classList.remove("is-open");
   bookingOverlay.setAttribute("aria-hidden", "true");
+  syncOverlayLock();
 }
 
 function openRecipe(recipeId) {
@@ -180,11 +220,41 @@ function openRecipe(recipeId) {
   recipeOverlay.setAttribute("aria-hidden", "false");
   recipeOverlay.querySelector(".recipe-panel").scrollTop = 0;
   closeRecipeButton.focus();
+  syncOverlayLock();
 }
 
 function closeRecipe() {
   recipeOverlay.classList.remove("is-open");
   recipeOverlay.setAttribute("aria-hidden", "true");
+  syncOverlayLock();
+}
+
+function openProduct(productId) {
+  const product = products.find((item) => item.id === productId);
+  if (!product) return;
+  activeProduct = product;
+  productQuantity = 1;
+  renderProductOverlay(product);
+  productOverlay.classList.add("is-open");
+  productOverlay.setAttribute("aria-hidden", "false");
+  productOverlay.querySelector(".product-panel").scrollTop = 0;
+  closeProductButton.focus();
+  syncOverlayLock();
+}
+
+function closeProduct() {
+  productOverlay.classList.remove("is-open");
+  productOverlay.setAttribute("aria-hidden", "true");
+  activeProduct = null;
+  syncOverlayLock();
+}
+
+function updateProductQuantity(nextValue) {
+  productQuantity = Math.max(1, Math.min(99, Number(nextValue) || 1));
+  const value = productOrderContent.querySelector("[data-product-quantity-value]");
+  const input = productOrderContent.querySelector("input[name='quantity']");
+  if (value) value.textContent = productQuantity;
+  if (input) input.value = productQuantity;
 }
 
 function setLandingMode(isLanding) {
@@ -202,14 +272,104 @@ function currentPage() {
 
 function route() {
   const page = currentPage();
+  destroyManifestoAnimation();
   setLandingMode(!page);
   if (page) {
     document.title = `${labelFor(page)} - Riccio Bistro`;
     window.scrollTo({ top: 0, behavior: "instant" });
+    if (page === "manifesto") {
+      window.requestAnimationFrame(setupManifestoAnimation);
+    }
   } else {
     document.title = "Riccio Bistro";
   }
   closeMenu();
+}
+
+function destroyManifestoAnimation() {
+  if (!manifestoAnimationContext) return;
+  manifestoAnimationContext.revert();
+  manifestoAnimationContext = null;
+}
+
+function setupManifestoAnimation() {
+  const section = document.querySelector("[data-manifesto-animation]");
+  if (!section || section.closest("[hidden]")) return;
+
+  destroyManifestoAnimation();
+
+  manifestoAnimationContext = gsap.context(() => {
+    const stage = section.querySelector(".manifesto-animation-stage");
+    const pinTarget = section.querySelector(".manifesto-narrative-stage") || stage;
+    const logo = section.querySelector(".manifesto-logo-full");
+    const brain = section.querySelector(".manifesto-brain");
+    const head = section.querySelector(".manifesto-head");
+    const meal = section.querySelector(".manifesto-meal");
+    const firstText = section.querySelector(".manifesto-phase--origin");
+    const secondText = section.querySelector(".manifesto-phase--mind");
+    const thirdText = section.querySelector(".manifesto-phase--meal");
+    if (!stage || !logo || !brain || !head) return;
+
+    const setFinalReducedMotionState = () => {
+      gsap.set([logo, head, brain], { opacity: 0 });
+      gsap.set(meal, { opacity: 1, xPercent: -50, yPercent: -50, y: 0, scale: 1 });
+      gsap.set(firstText, { opacity: 0, y: -10, pointerEvents: "none" });
+      gsap.set(secondText, { opacity: 0, y: -10, pointerEvents: "none" });
+      gsap.set(thirdText, { opacity: 1, y: 0, pointerEvents: "auto" });
+    };
+
+    gsap.set(brain, { opacity: 1 });
+    gsap.set(logo, { opacity: 1 });
+    gsap.set(head, { opacity: 0 });
+    gsap.set(meal, {
+      opacity: 0,
+      xPercent: -50,
+      yPercent: -50,
+      y: 28,
+      scale: 0.96,
+      transformOrigin: "50% 50%",
+    });
+    gsap.set(firstText, { opacity: 1, y: 0, pointerEvents: "auto" });
+    gsap.set(secondText, { opacity: 0, y: 16, pointerEvents: "none" });
+    gsap.set(thirdText, { opacity: 0, y: 18, pointerEvents: "none" });
+
+    if (reducedMotionQuery.matches) {
+      section.classList.add("is-reduced-motion");
+      window.requestAnimationFrame(setFinalReducedMotionState);
+      return;
+    }
+
+    section.classList.remove("is-reduced-motion");
+
+    const timeline = gsap.timeline({
+      defaults: { ease: "none" },
+      scrollTrigger: {
+        id: "manifesto-scroll",
+        trigger: section,
+        start: "top top",
+        end: () => `+=${Math.round(window.innerHeight * 4.2)}`,
+        scrub: true,
+        pin: pinTarget,
+        anticipatePin: 1,
+        invalidateOnRefresh: true,
+      },
+    });
+
+    timeline
+      .to({}, { duration: 0.12 }, 0)
+      .to(logo, { opacity: 0, duration: 0.22 }, 0.16)
+      .to(firstText, { opacity: 0, y: -16, pointerEvents: "none", duration: 0.18 }, 0.36)
+      .to(head, { opacity: 1, duration: 0.38 }, 0.56)
+      .to(secondText, { opacity: 1, y: 0, pointerEvents: "auto", duration: 0.14 }, 0.98)
+      .to({}, { duration: 0.26 }, 1.12)
+      .to(secondText, { opacity: 0, y: -14, pointerEvents: "none", duration: 0.14 }, 1.38)
+      .to([head, brain], { opacity: 0, duration: 0.16 }, 1.42)
+      .to(meal, { opacity: 1, y: 0, scale: 1, duration: 0.2 }, 1.48)
+      .to(thirdText, { opacity: 1, y: 0, pointerEvents: "auto", duration: 0.18 }, 1.55)
+      .to({}, { duration: 0.25 }, 1.75);
+
+    ScrollTrigger.refresh();
+  }, section);
 }
 
 function labelFor(page) {
@@ -238,40 +398,74 @@ function hero(title, eyebrow, text, card) {
 function renderManifesto() {
   document.querySelector("#manifesto").innerHTML = `
     <div class="manifesto-redesign">
-      <section class="manifesto-statement" aria-labelledby="manifesto-title">
-        <img class="manifesto-stamp" src="public/assets/branding/riccio-stamp.png" alt="" />
-        <p class="eyebrow">Manifesto</p>
-        <h2 id="manifesto-title">Cibo funzionale per il cervello.</h2>
-        <div class="manifesto-vision-wrap">
-          <p class="manifesto-vision">Schisce leggere, vegane, complete. Pensate per tornare sui libri lucidi.</p>
+      <section class="manifesto-animation-section manifesto-narrative" data-manifesto-animation aria-labelledby="manifesto-title">
+        <div class="manifesto-narrative-stage">
+          <div class="manifesto-animation-stage" aria-hidden="true">
+            <img
+              class="manifesto-meal"
+              src="public/assets/interface/manifesto-complete-meal.png"
+              alt=""
+              decoding="async"
+            />
+            <div class="manifesto-logo-system">
+              <img
+                class="manifesto-head"
+                src="public/assets/interface/manifesto-head-transparent.png"
+                alt=""
+                decoding="async"
+              />
+              <img
+                class="manifesto-brain"
+                src="branding/riccio.png"
+                alt=""
+                decoding="async"
+              />
+              <img
+                class="manifesto-logo-full"
+                src="branding/IMG_9878.PNG"
+                alt=""
+                decoding="async"
+              />
+            </div>
+          </div>
+
+          <div class="manifesto-copy-stage">
+            <p class="eyebrow">Manifesto</p>
+            <div class="manifesto-phase manifesto-phase--origin">
+              <h2 id="manifesto-title">Il pranzo che cercavamo non c’era.</h2>
+              <p>Intorno all’università trovavamo pasti costosi, pesanti o poco adatti alle ore di studio successive. Così abbiamo iniziato a progettare e cucinare quello che avremmo voluto mangiare noi.</p>
+              <div class="manifesto-micro-list" aria-label="Punto di partenza">
+                <span>studenti</span>
+                <span>cucina di casa</span>
+                <span>accessibile</span>
+              </div>
+            </div>
+
+            <div class="manifesto-phase manifesto-phase--mind">
+              <h2>Cibo funzionale per il cervello.</h2>
+              <p>Progettiamo ogni pasto pensando anche alle ore dopo pranzo. Carboidrati, verdure e proteine in ricette vegane, complete e leggere: abbastanza per saziare, senza spegnere la concentrazione.</p>
+            </div>
+
+            <div class="manifesto-phase manifesto-phase--meal">
+              <h2>Un pasto completo.</h2>
+              <p>Carboidrati, proteine e verdure. Ogni schiscia è pensata per essere completa, nutriente e abbastanza leggera da lasciarti energia per le ore dopo pranzo.</p>
+              <div class="manifesto-meal-icons" aria-label="Equilibrio del pasto">
+                <figure>
+                  <img src="public/assets/interface/manifesto-carb-icon.png" alt="" />
+                  <figcaption>Carboidrati</figcaption>
+                </figure>
+                <figure>
+                  <img src="public/assets/interface/manifesto-protein-icon.png" alt="" />
+                  <figcaption>Proteine</figcaption>
+                </figure>
+                <figure>
+                  <img src="public/assets/interface/manifesto-veg-icon.png" alt="" />
+                  <figcaption>Verdure</figcaption>
+                </figure>
+              </div>
+            </div>
+          </div>
         </div>
-      </section>
-
-      <section class="manifesto-split" aria-label="Problema e risposta">
-        <article class="manifesto-problem">
-          <span>Il problema</span>
-          <h3>Intorno al Politecnico il pranzo spesso pesa.</h3>
-          <p>Costoso, oleoso, poco adatto a chi deve tornare a studiare.</p>
-        </article>
-        <article class="manifesto-answer">
-          <span>La risposta</span>
-          <h3>Schisce vegane, complete, leggere.</h3>
-          <p>Carboidrati, verdure, proteine. Gusto, energia, cura.</p>
-        </article>
-      </section>
-
-      <section class="manifesto-formula" aria-label="Formula del pasto">
-        <div class="formula-token">carboidrati</div>
-        <div class="formula-plus" aria-hidden="true">+</div>
-        <div class="formula-token">verdure</div>
-        <div class="formula-plus" aria-hidden="true">+</div>
-        <div class="formula-token">proteine</div>
-      </section>
-
-      <section class="manifesto-signals" aria-label="Segnali">
-        <p>energia</p>
-        <p>focus</p>
-        <p>leggerezza</p>
       </section>
     </div>
   `;
@@ -279,43 +473,39 @@ function renderManifesto() {
 
 function renderAbout() {
   document.querySelector("#about").innerHTML = `
-    <div class="about-redesign about-lab" aria-labelledby="about-title">
-      <section class="about-lab-intro">
-        <p class="eyebrow">About us</p>
-        <h2 id="about-title">Leila, Alessandro e una cucina che arriva in università.</h2>
-      </section>
-
-      <section class="about-lab-grid">
-        <figure class="about-lab-photo">
+    <div class="about-redesign about-student-place" aria-labelledby="about-title">
+      <h2 id="about-title" class="visually-hidden">About us</h2>
+      <section class="about-student-hero">
+        <figure class="about-student-photo">
           <img src="public/assets/images/about-leila-alessandro.jpg" alt="Leila e Alessandro, fondatori del Riccio Bistro" />
-          <figcaption>Studenti designer del Politecnico. Cuciniamo a casa, consegniamo in università.</figcaption>
         </figure>
 
-        <article class="about-lab-note about-lab-note-main">
-          <h3>Non è solo cucinare.</h3>
-          <p>Prepariamo schisce biodegradabili, le portiamo in un punto comune e parliamo con chi le mangia.</p>
-        </article>
-
-        <aside class="about-lab-number" aria-label="Community">
-          <span>community</span>
-          <strong>70</strong>
-          <p>membri circa</p>
-        </aside>
-
-        <div class="about-lab-stack">
-          <article>
-            <span>casa</span>
-            <p>Una cucina domestica, piccola, concreta.</p>
-          </article>
-          <article>
-            <span>orto</span>
-            <p>Ingredienti anche dall'orto condiviso del Politecnico.</p>
-          </article>
-          <article>
-            <span>feedback</span>
-            <p>Ascoltiamo gusto, leggerezza e concentrazione nel pomeriggio.</p>
-          </article>
+        <div class="about-student-copy">
+          <p class="about-student-lead">Abbiamo creato il posto in cui avremmo voluto mangiare da studenti.</p>
+          <p class="about-student-intro">Siamo studenti anche noi. Cercavamo un pranzo buono, leggero, accessibile e fatto con cura — qualcosa che avremmo voluto trovare ogni giorno intorno all’università. Non c’era, così abbiamo iniziato a cucinarlo a casa e a condividerlo con i nostri amici.</p>
         </div>
+      </section>
+
+      <section class="about-icon-row" aria-label="Valori">
+        <article>
+          <img src="public/assets/icons/about-community.png" alt="" />
+          <h3>Comunità</h3>
+        </article>
+        <article>
+          <img src="public/assets/icons/about-homemade.png" alt="" />
+          <h3>Fatto in casa</h3>
+        </article>
+        <article>
+          <img src="public/assets/icons/about-sustainable.png" alt="" />
+          <h3>Sostenibile</h3>
+        </article>
+      </section>
+
+      <section class="about-student-lower" aria-label="Riccio Bistro in movimento">
+        <p class="about-student-lower-lead">Ogni settimana cuciniamo, portiamo, serviamo e ascoltiamo.</p>
+        <figure class="about-student-second-photo">
+          <img src="public/assets/images/about-leila-alessandro-2628.jpg" alt="Leila e Alessandro in movimento" />
+        </figure>
       </section>
     </div>
   `;
@@ -420,10 +610,10 @@ function renderProducts() {
   const productCards = products
     .map(
       (product) => `
-        <article class="archive-card product-card">
-          <div class="product-mark">
+        <article class="archive-card product-card product--${product.type}" style="--product-bg: ${product.bg}">
+          <button class="product-mark product-open" type="button" data-product-id="${product.id}" aria-label="Apri ordine ${product.name}">
             <img src="${product.logo}" alt="" />
-          </div>
+          </button>
           <span class="date-chip">${product.category}</span>
           <h3>${product.name}</h3>
           <p>${product.description}</p>
@@ -431,18 +621,7 @@ function renderProducts() {
             <span>${product.format}</span>
             <strong>${product.price}</strong>
           </div>
-          <form class="product-reservation" data-product-name="${product.name}">
-            <label>
-              <span>Telefono</span>
-              <input type="tel" name="phone" inputmode="tel" autocomplete="tel" placeholder="+39" required />
-            </label>
-            <label>
-              <span>Quantità</span>
-              <input type="number" name="quantity" min="1" value="1" required />
-            </label>
-            <button class="page-link product-book-button" type="submit">Prenota</button>
-            <p class="product-feedback" role="status" aria-live="polite"></p>
-          </form>
+          <button class="page-link product-book-button" type="button" data-product-id="${product.id}">Ordina</button>
         </article>
       `
     )
@@ -453,6 +632,43 @@ function renderProducts() {
     <div class="archive-grid">
       ${productCards}
     </div>
+  `;
+}
+
+function renderProductOverlay(product) {
+  productOrderContent.innerHTML = `
+    <header class="product-order-head">
+      <div class="product-order-image product--${product.type}" style="--product-bg: ${product.bg}">
+        <img src="${product.logo}" alt="" />
+      </div>
+      <div>
+        <span class="date-chip">${product.category}</span>
+        <h2 id="product-order-title">${product.name}</h2>
+        <p>${product.description}</p>
+        <div class="product-order-meta" aria-label="Formato e prezzo">
+          <span>${product.format}</span>
+          <strong>${product.price}</strong>
+        </div>
+      </div>
+    </header>
+
+    <form class="product-order-form">
+      <label>
+        <span>Telefono</span>
+        <input type="tel" name="phone" inputmode="tel" autocomplete="tel" placeholder="+39" required />
+      </label>
+      <label>
+        <span>Quantità</span>
+        <input type="hidden" name="quantity" value="${productQuantity}" />
+        <span class="quantity-stepper" aria-label="Quantità">
+          <button type="button" data-quantity-action="decrease" aria-label="Diminuisci quantità">−</button>
+          <strong data-product-quantity-value>${productQuantity}</strong>
+          <button type="button" data-quantity-action="increase" aria-label="Aumenta quantità">+</button>
+        </span>
+      </label>
+      <button class="primary-cta product-confirm" type="submit">Conferma ordine</button>
+      <p class="product-feedback" role="status" aria-live="polite"></p>
+    </form>
   `;
 }
 
@@ -555,16 +771,27 @@ openBookingButtons.forEach((button) => button.addEventListener("click", openBook
 closeButton.addEventListener("click", closeMenu);
 closeBookingButton.addEventListener("click", closeBooking);
 closeRecipeButton.addEventListener("click", closeRecipe);
+closeProductButton.addEventListener("click", closeProduct);
 menuLinks.forEach((link) => link.addEventListener("click", closeMenu));
 document.querySelector("#ricette").addEventListener("click", (event) => {
   const recipeButton = event.target.closest("[data-recipe-id]");
   if (recipeButton) openRecipe(recipeButton.dataset.recipeId);
 });
-document.querySelector("#prodotti").addEventListener("submit", (event) => {
-  const form = event.target.closest(".product-reservation");
-  if (!form) return;
+document.querySelector("#prodotti").addEventListener("click", (event) => {
+  const productButton = event.target.closest("[data-product-id]");
+  if (productButton) openProduct(productButton.dataset.productId);
+});
+productOrderContent.addEventListener("click", (event) => {
+  const actionButton = event.target.closest("[data-quantity-action]");
+  if (!actionButton) return;
+  const delta = actionButton.dataset.quantityAction === "increase" ? 1 : -1;
+  updateProductQuantity(productQuantity + delta);
+});
+productOrderContent.addEventListener("submit", (event) => {
   event.preventDefault();
-  const productName = form.dataset.productName;
+  const form = event.target.closest(".product-order-form");
+  if (!form || !activeProduct) return;
+  const productName = activeProduct.name;
   const phone = form.elements.phone.value.trim();
   const quantity = form.elements.quantity.value;
   const feedback = form.querySelector(".product-feedback");
@@ -581,6 +808,9 @@ bookingOverlay.addEventListener("click", (event) => {
 recipeOverlay.addEventListener("click", (event) => {
   if (event.target === recipeOverlay) closeRecipe();
 });
+productOverlay.addEventListener("click", (event) => {
+  if (event.target === productOverlay) closeProduct();
+});
 bookingContent.addEventListener("submit", (event) => {
   event.preventDefault();
   const selected = bookingContent.querySelector("input[name='formula']:checked")?.value;
@@ -593,6 +823,7 @@ window.addEventListener("keydown", (event) => {
     closeMenu();
     closeBooking();
     closeRecipe();
+    closeProduct();
   }
 });
 window.addEventListener("hashchange", route);

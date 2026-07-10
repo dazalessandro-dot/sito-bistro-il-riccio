@@ -116,3 +116,36 @@ Pattern evitati:
 - Archivio menù rinuncia ai tag sotto le schede per sembrare piu curato e meno decorativo.
 - Ricette usa frame quadrati coerenti, hover giallo uniforme e overlay compatto con immagine circolare.
 - Prodotti aggiunge una prenotazione minima per ogni card: telefono, quantita e conferma locale, senza introdurre backend.
+
+## Direzione Prodotti E About Reference
+
+Prodotti:
+
+- La griglia prodotto deve leggere come famiglia visiva: i due oli sono la scala massima e identica, il jar scende leggermente, l'iced tea scende ancora, i datteri restano il formato piu piccolo.
+- Il fondo delle immagini e trattato come parte dell'interfaccia: il colore campionato `#fbfbf3` viene usato nel frame prodotto per evitare rettangoli o stacchi tra JPEG e card.
+- La prenotazione non vive piu nella card: la card resta pulita e l'azione `Ordina` apre un overlay dedicato.
+- L'overlay ordine riprende il linguaggio degli overlay ricetta: pannello centrale, immagine, dati essenziali, stepper quantita, feedback locale.
+
+About us:
+
+- La nuova reference disegnata a mano viene tradotta in layout, non copiata come immagine.
+- La pagina parte direttamente dalla composizione: foto grande, testi brevi, grande `70`, tre box informativi.
+- Il testo iniziale grande e stato eliminato per non ripetere una gerarchia da homepage interna.
+- Il racconto resta concreto: Leila e Alessandro, Politecnico, cucina domestica, orto condiviso, schisce biodegradabili, community e feedback nel pomeriggio.
+
+## Direzione Manifesto Narrativo E About Finale
+
+About us:
+
+- Le tre icone sono state ridotte per diventare segni di orientamento: icona piccola, titolo chiaro, nessuna descrizione.
+- La seconda foto crea un movimento alternato: foto principale in alto, immagine gestuale in basso sul lato opposto.
+- La sezione resta editoriale e umana, senza trasformarsi in gallery.
+
+Manifesto:
+
+- La pagina non usa piu una griglia di card: il Manifesto e una scena scroll-driven costruita attorno all'animazione Riccio -> cervello -> mente.
+- Su desktop la composizione e divisa in due: animazione grande a sinistra, testo a destra.
+- La narrazione ha due momenti:
+  1. problema generale: il pranzo che cercavamo intorno all'universita non c'era;
+  2. visione: cibo funzionale per il cervello, pensato anche per le ore dopo pranzo.
+- Il cambio testo e sincronizzato alla timeline GSAP: quando il logo perde muso e scritta e compare la testa, il copy passa dalla storia del progetto alla visione sul cervello.

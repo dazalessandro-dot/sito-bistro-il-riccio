@@ -54,6 +54,10 @@ body.is-landing {
   overflow: hidden;
 }
 
+body.has-modal-open {
+  overflow: hidden;
+}
+
 body:not(.is-landing) {
   overflow-x: hidden;
 }
@@ -350,7 +354,8 @@ h1 {
 
 .menu-overlay,
 .booking-overlay,
-.recipe-overlay {
+.recipe-overlay,
+.product-overlay {
   position: fixed;
   inset: 0;
   z-index: 50;
@@ -361,14 +366,16 @@ h1 {
 
 .menu-overlay.is-open,
 .booking-overlay.is-open,
-.recipe-overlay.is-open {
+.recipe-overlay.is-open,
+.product-overlay.is-open {
   display: grid;
   place-items: center;
 }
 
 .menu-panel,
 .booking-panel,
-.recipe-panel {
+.recipe-panel,
+.product-panel {
   position: relative;
   width: min(1040px, 100%);
   max-height: calc(100svh - 28px);
@@ -389,6 +396,17 @@ h1 {
   padding: clamp(18px, 2.6vw, 34px);
 }
 
+.product-panel {
+  width: min(940px, 100%);
+  padding: clamp(18px, 2.8vw, 34px);
+}
+
+.product-panel .menu-topline {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
 .menu-topline {
   display: flex;
   justify-content: flex-end;
@@ -407,6 +425,7 @@ h1 {
 .menu-panel h2,
 .booking-panel h2,
 .recipe-panel h2,
+.product-panel h2,
 .page-hero h2 {
   color: var(--green-dark);
   font-size: clamp(3.2rem, 9vw, 7.4rem);
@@ -494,6 +513,11 @@ h1 {
   padding: 116px 0 72px;
 }
 
+.page-manifesto {
+  width: 100%;
+  padding: 0 0 72px;
+}
+
 .page-hero {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
@@ -524,6 +548,99 @@ h1 {
 .manifesto-redesign > * {
   min-width: 0;
   max-width: 100%;
+}
+
+.page-manifesto .manifesto-redesign {
+  gap: 0;
+  overflow: visible;
+}
+
+.manifesto-animation-section {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  background: #fff;
+  isolation: isolate;
+}
+
+.manifesto-animation-stage {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100svh;
+  overflow: hidden;
+  background: #fff;
+}
+
+.manifesto-head,
+.manifesto-logo-system,
+.manifesto-logo-full,
+.manifesto-brain,
+.manifesto-meal {
+  position: absolute;
+  display: block;
+  pointer-events: none;
+  user-select: none;
+}
+
+.manifesto-head {
+  z-index: 1;
+  left: -34.681%;
+  top: 6.85%;
+  width: 144.732%;
+  height: auto;
+  object-fit: contain;
+  opacity: 0;
+}
+
+.manifesto-logo-system {
+  z-index: 2;
+  left: 50%;
+  top: 50%;
+  width: min(82vw, 980px);
+  aspect-ratio: 2999 / 2171;
+  overflow: visible;
+  transform: translate(-50%, -50%);
+}
+
+.manifesto-logo-full {
+  inset: 0;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.manifesto-brain {
+  z-index: 2;
+  left: -0.069%;
+  top: -1.832%;
+  width: 100.126%;
+  height: auto;
+}
+
+.manifesto-meal {
+  z-index: 4;
+  left: 50%;
+  top: 50%;
+  width: min(74vw, 820px);
+  max-height: 86svh;
+  object-fit: contain;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+}
+
+.manifesto-animation-section.is-reduced-motion .manifesto-animation-stage {
+  min-height: min(780px, 100svh);
+}
+
+.manifesto-content-shell {
+  display: grid;
+  gap: clamp(14px, 2vw, 24px);
+  width: min(1160px, calc(100vw - 32px));
+  margin: 0 auto;
+  padding-top: clamp(42px, 7vw, 82px);
 }
 
 .manifesto-statement {
@@ -865,6 +982,267 @@ h1 {
 
 .about-lab-stack article:nth-child(3) {
   background: #e7d4de;
+}
+
+.about-reference {
+  min-height: calc(100svh - 120px);
+}
+
+.about-reference-grid {
+  display: grid;
+  grid-template-columns: minmax(360px, 0.88fr) minmax(0, 1fr);
+  grid-template-rows: auto minmax(150px, auto) minmax(210px, auto);
+  grid-template-areas:
+    "photo copy"
+    "photo number"
+    "photo cards";
+  gap: clamp(16px, 2.5vw, 30px);
+  align-items: stretch;
+}
+
+.about-reference-photo {
+  grid-area: photo;
+  position: relative;
+  min-height: min(760px, calc(100svh - 140px));
+  margin: 0;
+  border: var(--line);
+  border-radius: var(--radius);
+  background: var(--cream);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.about-reference-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 49% 50%;
+}
+
+.about-reference-photo figcaption {
+  position: absolute;
+  left: clamp(14px, 2vw, 22px);
+  right: clamp(14px, 2vw, 22px);
+  bottom: clamp(14px, 2vw, 22px);
+  padding: 10px 12px 8px;
+  border: 1.5px solid var(--ink);
+  border-radius: var(--radius);
+  background: var(--yellow);
+  box-shadow: 4px 4px 0 var(--ink);
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 1.55vw, 1.35rem);
+  line-height: 0.96;
+  text-transform: uppercase;
+}
+
+.about-reference-copy {
+  grid-area: copy;
+  display: grid;
+  gap: 11px;
+  align-content: start;
+  max-width: 660px;
+  padding-top: clamp(20px, 4vw, 56px);
+}
+
+.about-reference-copy p {
+  max-width: 620px;
+  margin: 0;
+  color: var(--muted);
+  font-size: clamp(1.02rem, 1.7vw, 1.22rem);
+  line-height: 1.34;
+}
+
+.about-reference-number {
+  grid-area: number;
+  display: flex;
+  gap: clamp(12px, 2vw, 24px);
+  align-items: end;
+  align-self: center;
+}
+
+.about-reference-number strong {
+  color: var(--green-dark);
+  font-family: var(--font-display);
+  font-size: clamp(8rem, 18vw, 15rem);
+  font-weight: normal;
+  line-height: 0.72;
+}
+
+.about-reference-number span {
+  max-width: 190px;
+  padding-bottom: clamp(10px, 2vw, 22px);
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 2.2vw, 1.9rem);
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+.about-reference-line {
+  height: 26px;
+  max-width: 58%;
+  border-bottom: 3px solid var(--ink);
+  border-radius: 50%;
+}
+
+.about-reference-line-a {
+  grid-column: 2;
+  grid-row: 1;
+  justify-self: start;
+  align-self: end;
+  width: 48%;
+  transform: translateY(20px) rotate(1deg);
+}
+
+.about-reference-line-b {
+  grid-column: 2;
+  grid-row: 2;
+  justify-self: end;
+  align-self: start;
+  width: 30%;
+  transform: translateY(-10px) rotate(-2deg);
+}
+
+.about-reference-cards {
+  grid-area: cards;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(12px, 2vw, 18px);
+  align-self: end;
+}
+
+.about-reference-cards article {
+  display: grid;
+  align-content: start;
+  gap: 16px;
+  min-height: 210px;
+  padding: clamp(15px, 2vw, 20px);
+  border: var(--line);
+  border-radius: var(--radius);
+  background: var(--cream);
+  box-shadow: var(--shadow);
+}
+
+.about-reference-cards article:nth-child(2) {
+  background: #dce9c5;
+}
+
+.about-reference-cards article:nth-child(3) {
+  background: #e7d4de;
+}
+
+.about-reference-cards span {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+}
+
+.about-reference-cards p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.94rem;
+  line-height: 1.32;
+}
+
+.about-student-place {
+  gap: clamp(20px, 3vw, 34px);
+  min-height: calc(100svh - 120px);
+}
+
+.about-student-hero {
+  display: grid;
+  grid-template-columns: minmax(360px, 0.9fr) minmax(0, 1fr);
+  gap: clamp(18px, 4vw, 58px);
+  align-items: center;
+}
+
+.about-student-photo {
+  min-height: min(720px, calc(100svh - 150px));
+  margin: 0;
+  border: var(--line);
+  border-radius: var(--radius);
+  background: var(--cream);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.about-student-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 49% 50%;
+}
+
+.about-student-copy {
+  display: grid;
+  gap: clamp(18px, 2.8vw, 30px);
+  align-content: center;
+}
+
+.about-student-lead {
+  max-width: 720px;
+  margin: 0;
+  color: var(--green-dark);
+  font-family: var(--font-display);
+  font-size: clamp(2.6rem, 4.8vw, 5.25rem);
+  line-height: 0.9;
+  text-transform: uppercase;
+}
+
+.about-student-intro {
+  max-width: 610px;
+  margin: 0;
+  color: var(--muted);
+  font-size: clamp(1.08rem, 1.65vw, 1.38rem);
+  line-height: 1.4;
+}
+
+.about-icon-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(14px, 2.4vw, 26px);
+}
+
+.about-icon-row article {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(6px, 1vw, 12px);
+  height: clamp(180px, 18vw, 245px);
+  padding: clamp(6px, 1vw, 12px);
+  border: var(--line);
+  border-radius: var(--radius);
+  background: var(--cream);
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+
+.about-icon-row article:nth-child(2) {
+  background: #f4df77;
+}
+
+.about-icon-row article:nth-child(3) {
+  background: #dce9c5;
+}
+
+.about-icon-row img {
+  display: block;
+  width: clamp(205px, 24vw, 340px);
+  max-width: 112%;
+  aspect-ratio: 1;
+  object-fit: contain;
+  flex: 0 0 auto;
+}
+
+.about-icon-row h3 {
+  margin: 0;
+  max-width: 100%;
+  font-size: clamp(1.15rem, 2vw, 2rem);
+  line-height: 0.9;
+  text-transform: uppercase;
+  overflow-wrap: break-word;
+  white-space: nowrap;
 }
 
 .about-editorial-head h2 {
@@ -1436,6 +1814,7 @@ h1 {
 .product-card {
   justify-content: flex-start;
   min-height: 100%;
+  --product-bg: #fbfbf3;
 }
 
 .product-card:nth-child(2n) {
@@ -1450,15 +1829,50 @@ h1 {
   padding: 0;
   border: 1.5px solid var(--ink);
   border-radius: var(--radius);
-  background: var(--cream);
+  background: var(--product-bg);
   overflow: hidden;
+  cursor: pointer;
+  appearance: none;
 }
 
 .product-mark img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  mix-blend-mode: multiply;
+  object-position: center;
+  mix-blend-mode: normal;
+  transition: transform 160ms ease;
+}
+
+.product-mark:hover img,
+.product-mark:focus-visible img {
+  transform: scale(1.025);
+}
+
+.product-mark:focus-visible {
+  outline: 3px solid var(--yellow);
+  outline-offset: 3px;
+}
+
+.product--oil .product-mark img,
+.product-order-image.product--oil img {
+  object-position: center 48%;
+}
+
+.product--jar .product-mark img,
+.product-order-image.product--jar img {
+  object-position: center 49%;
+}
+
+.product--tea .product-mark img,
+.product-order-image.product--tea img {
+  object-position: center 50%;
+  mix-blend-mode: normal;
+}
+
+.product--dates .product-mark img,
+.product-order-image.product--dates img {
+  object-position: center 49%;
 }
 
 .product-card > .date-chip {
@@ -1495,51 +1909,158 @@ h1 {
   background: var(--yellow);
 }
 
-.product-reservation {
-  display: grid;
-  grid-template-columns: 1fr 92px;
-  gap: 10px;
-  padding-top: 14px;
-  border-top: 1.5px solid rgba(51, 33, 22, 0.28);
-}
-
-.product-reservation label {
-  display: grid;
-  gap: 5px;
-}
-
-.product-reservation label span {
-  font-family: var(--font-display);
-  font-size: 0.92rem;
-  line-height: 1;
-  text-transform: uppercase;
-}
-
-.product-reservation input {
-  width: 100%;
-  min-height: 38px;
-  padding: 8px 10px;
-  border: 1.5px solid var(--ink);
-  border-radius: var(--radius);
-  background: var(--paper);
-  color: var(--ink);
-  font: inherit;
-}
-
 .product-book-button {
-  grid-column: 1 / -1;
   justify-self: start;
+  margin-top: 0;
   border: var(--line);
   cursor: pointer;
 }
 
 .product-feedback {
-  grid-column: 1 / -1;
   min-height: 20px;
   margin: 0;
   color: var(--green-dark);
   font-size: 0.92rem;
   line-height: 1.35;
+}
+
+.product-order-head {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.48fr) minmax(0, 1fr);
+  gap: clamp(16px, 3vw, 32px);
+  align-items: center;
+  padding-bottom: clamp(14px, 2vw, 22px);
+  border-bottom: var(--line);
+}
+
+.product-order-image {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 4 / 5;
+  border: var(--line);
+  border-radius: var(--radius);
+  background: var(--product-bg);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.product-order-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  mix-blend-mode: normal;
+}
+
+.product-order-head h2 {
+  margin: 12px 0 8px;
+  font-size: clamp(2.5rem, 7vw, 5.8rem);
+  line-height: 0.86;
+}
+
+.product-order-head p {
+  max-width: 620px;
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.42;
+}
+
+.product-order-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.product-order-meta span,
+.product-order-meta strong {
+  display: inline-grid;
+  place-items: center;
+  min-height: 38px;
+  padding: 6px 11px 4px;
+  border: 1.5px solid var(--ink);
+  border-radius: var(--radius);
+  background: var(--cream);
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: normal;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.product-order-meta strong {
+  background: var(--yellow);
+}
+
+.product-order-form {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: clamp(12px, 2vw, 18px);
+  align-items: end;
+  margin-top: clamp(16px, 2.4vw, 24px);
+}
+
+.product-order-form label {
+  display: grid;
+  gap: 7px;
+}
+
+.product-order-form label > span:first-child {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.product-order-form input[type="tel"] {
+  width: 100%;
+  min-height: 46px;
+  padding: 9px 12px;
+  border: 1.5px solid var(--ink);
+  border-radius: var(--radius);
+  background: var(--cream);
+  color: var(--ink);
+  font: inherit;
+}
+
+.quantity-stepper {
+  display: inline-grid;
+  grid-template-columns: 42px 56px 42px;
+  align-items: center;
+  min-height: 46px;
+  border: 1.5px solid var(--ink);
+  border-radius: var(--radius);
+  background: var(--cream);
+  overflow: hidden;
+}
+
+.quantity-stepper button {
+  height: 100%;
+  border: 0;
+  background: var(--yellow);
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+.quantity-stepper strong {
+  display: grid;
+  place-items: center;
+  height: 100%;
+  border-inline: 1.5px solid var(--ink);
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: normal;
+}
+
+.product-confirm {
+  justify-self: start;
+  min-height: 46px;
+}
+
+.product-order-form .product-feedback {
+  grid-column: 1 / -1;
+  color: var(--green-dark);
 }
 
 .booking-source {
@@ -1698,6 +2219,19 @@ h1 {
     min-height: 360px;
   }
 
+  .page-manifesto {
+    width: 100%;
+    padding-top: 0;
+  }
+
+  .manifesto-logo-system {
+    width: min(94vw, 820px);
+  }
+
+  .manifesto-head {
+    width: min(92vw, 820px);
+  }
+
   .manifesto-stamp {
     right: -150px;
     top: 50%;
@@ -1717,13 +2251,63 @@ h1 {
   .manifesto-split,
   .manifesto-formula,
   .manifesto-signals,
+  .about-student-hero,
   .about-editorial-head,
   .about-photo-story,
   .about-flow,
+  .about-reference-grid,
   .about-lab-intro,
   .about-lab-grid,
   .about-lab-stack {
     grid-template-columns: 1fr;
+  }
+
+  .about-reference-grid {
+    grid-template-areas:
+      "photo"
+      "copy"
+      "number"
+      "cards";
+    grid-template-rows: auto;
+  }
+
+  .about-reference-photo {
+    min-height: 560px;
+  }
+
+  .about-reference-line {
+    display: none;
+  }
+
+  .about-reference-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .about-student-photo {
+    min-height: 560px;
+  }
+
+  .about-icon-row {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .about-icon-row article {
+    height: 215px;
+    padding: 6px;
+  }
+
+  .about-icon-row img {
+    width: clamp(190px, 27vw, 260px);
+    max-width: 118%;
+  }
+
+  .product-order-head,
+  .product-order-form {
+    grid-template-columns: 1fr;
+  }
+
+  .product-order-image {
+    width: min(360px, 100%);
   }
 
   .about-lab-grid {
@@ -1845,6 +2429,28 @@ h1 {
     padding-top: 94px;
   }
 
+  .page-manifesto {
+    width: 100%;
+    padding-top: 0;
+  }
+
+  .manifesto-animation-stage {
+    height: 100svh;
+  }
+
+  .manifesto-logo-system {
+    width: 112vw;
+  }
+
+  .manifesto-head {
+    width: 112vw;
+  }
+
+  .manifesto-content-shell {
+    width: min(100vw - 20px, 500px);
+    padding-top: 42px;
+  }
+
   .manifesto-statement {
     min-height: 380px;
     padding: 20px;
@@ -1882,6 +2488,64 @@ h1 {
     min-height: 420px;
   }
 
+  .about-reference-photo {
+    min-height: 430px;
+  }
+
+  .about-reference-photo figcaption {
+    font-size: 0.92rem;
+  }
+
+  .about-reference-copy {
+    padding-top: 0;
+  }
+
+  .about-reference-number {
+    align-items: center;
+  }
+
+  .about-reference-number strong {
+    font-size: clamp(6.6rem, 34vw, 10rem);
+  }
+
+  .about-reference-cards article {
+    min-height: 132px;
+  }
+
+  .about-student-hero {
+    gap: 18px;
+  }
+
+  .about-student-photo {
+    min-height: 430px;
+  }
+
+  .about-student-lead {
+    font-size: clamp(2.25rem, 10.5vw, 3.8rem);
+  }
+
+  .about-student-intro {
+    font-size: 1.08rem;
+  }
+
+  .about-icon-row {
+    grid-template-columns: 1fr;
+  }
+
+  .about-icon-row article {
+    height: 220px;
+    padding: 8px;
+  }
+
+  .about-icon-row img {
+    width: min(82vw, 275px);
+    max-width: 110%;
+  }
+
+  .about-icon-row h3 {
+    font-size: clamp(1.25rem, 6vw, 1.65rem);
+  }
+
   .about-lab-number strong {
     font-size: clamp(5.6rem, 30vw, 9rem);
   }
@@ -1909,6 +2573,24 @@ h1 {
     box-shadow: 7px 7px 0 var(--ink);
   }
 
+  .product-panel {
+    max-height: calc(100svh - 20px);
+    box-shadow: 7px 7px 0 var(--ink);
+  }
+
+  .product-order-head h2 {
+    font-size: clamp(2.2rem, 13vw, 4.2rem);
+  }
+
+  .product-order-form {
+    align-items: stretch;
+  }
+
+  .quantity-stepper {
+    width: 100%;
+    grid-template-columns: 52px 1fr 52px;
+  }
+
   .recipe-icon-grid {
     grid-template-columns: 1fr;
   }
@@ -1934,5 +2616,329 @@ h1 {
   .booking-option span {
     display: grid;
     gap: 4px;
+  }
+}
+
+/* Manifesto narrative redesign */
+.manifesto-narrative {
+  min-height: 100svh;
+  background: #fff;
+}
+
+.manifesto-narrative-stage {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(340px, 0.95fr);
+  gap: clamp(24px, 5vw, 76px);
+  align-items: center;
+  width: min(1320px, calc(100vw - 36px));
+  min-height: 100svh;
+  margin: 0 auto;
+  padding: clamp(76px, 9vw, 120px) 0 clamp(44px, 6vw, 74px);
+  background: #fff;
+}
+
+.manifesto-narrative .manifesto-animation-stage {
+  position: relative;
+  display: grid;
+  place-items: center;
+  z-index: 1;
+  width: 100%;
+  height: min(78svh, 760px);
+  min-height: 500px;
+  overflow: visible;
+  background: #fff;
+}
+
+.manifesto-narrative .manifesto-logo-system {
+  z-index: 3;
+  width: min(48vw, 680px);
+}
+
+.manifesto-narrative .manifesto-head {
+  left: -34.681%;
+  top: 6.85%;
+  width: 144.732%;
+}
+
+.manifesto-copy-stage {
+  position: relative;
+  display: grid;
+  align-content: center;
+  z-index: 6;
+  min-height: 470px;
+  padding: clamp(18px, 3vw, 34px) 0;
+}
+
+.manifesto-copy-stage .eyebrow {
+  margin-bottom: clamp(14px, 2vw, 22px);
+}
+
+.manifesto-phase {
+  grid-area: 2 / 1;
+  display: grid;
+  gap: clamp(14px, 2vw, 22px);
+  max-width: 560px;
+  will-change: opacity, transform;
+}
+
+.manifesto-phase--mind,
+.manifesto-phase--meal {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.manifesto-phase h2 {
+  margin: 0;
+  color: var(--green-dark);
+  font-size: clamp(3.1rem, 6vw, 6rem);
+  line-height: 0.86;
+  text-transform: uppercase;
+  overflow-wrap: break-word;
+}
+
+.manifesto-phase p {
+  max-width: 500px;
+  margin: 0;
+  color: var(--muted);
+  font-size: clamp(1.03rem, 1.35vw, 1.22rem);
+  line-height: 1.43;
+}
+
+.manifesto-micro-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: clamp(4px, 1vw, 8px);
+}
+
+.manifesto-micro-list span {
+  padding: 8px 11px 7px;
+  border: var(--line);
+  border-radius: 999px;
+  background: var(--yellow);
+  box-shadow: 3px 3px 0 var(--ink);
+  font-family: var(--font-display);
+  font-size: clamp(0.94rem, 1.15vw, 1.08rem);
+  line-height: 1;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.manifesto-micro-list span:nth-child(2) {
+  background: var(--cream);
+}
+
+.manifesto-micro-list span:nth-child(3) {
+  background: #dce9c5;
+}
+
+.manifesto-meal-icons {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(14px, 2vw, 22px);
+  align-items: start;
+  max-width: 520px;
+  margin-top: clamp(8px, 1.5vw, 14px);
+}
+
+.manifesto-meal-icons figure {
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  min-width: 0;
+  margin: 0;
+  text-align: center;
+}
+
+.manifesto-meal-icons img {
+  display: block;
+  width: clamp(64px, 7vw, 92px);
+  aspect-ratio: 1;
+  object-fit: contain;
+}
+
+.manifesto-meal-icons figcaption {
+  font-family: var(--font-display);
+  font-size: clamp(0.92rem, 1.25vw, 1.18rem);
+  line-height: 0.95;
+  text-transform: uppercase;
+  overflow-wrap: break-word;
+}
+
+.manifesto-animation-section.is-reduced-motion .manifesto-narrative-stage {
+  min-height: auto;
+}
+
+/* About update */
+.about-icon-row article {
+  height: clamp(148px, 14vw, 190px);
+  gap: clamp(8px, 1vw, 12px);
+  padding: clamp(10px, 1.2vw, 14px);
+}
+
+.about-icon-row img {
+  width: clamp(88px, 9vw, 132px);
+  max-width: 78%;
+}
+
+.about-icon-row h3 {
+  font-size: clamp(1.22rem, 2.4vw, 2.05rem);
+  line-height: 0.94;
+  white-space: normal;
+}
+
+.about-student-lower {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(320px, 0.72fr);
+  gap: clamp(18px, 4vw, 58px);
+  align-items: center;
+  margin-top: clamp(8px, 2vw, 22px);
+}
+
+.about-student-lower-lead {
+  max-width: 760px;
+  margin: 0;
+  color: var(--green-dark);
+  font-family: var(--font-display);
+  font-size: clamp(2.6rem, 5.7vw, 6.5rem);
+  line-height: 0.86;
+  text-transform: uppercase;
+  overflow-wrap: break-word;
+}
+
+.about-student-note {
+  display: grid;
+  gap: 10px;
+  max-width: 430px;
+  padding: clamp(18px, 2.5vw, 28px);
+  border: var(--line);
+  border-radius: var(--radius);
+  background: #dce9c5;
+  box-shadow: var(--shadow);
+  transform: rotate(-0.7deg);
+}
+
+.about-student-note span {
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 1.9vw, 1.7rem);
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+.about-student-note p {
+  margin: 0;
+  color: var(--muted);
+  font-size: clamp(0.98rem, 1.2vw, 1.08rem);
+  line-height: 1.38;
+}
+
+.about-student-second-photo {
+  min-height: clamp(360px, 42vw, 640px);
+  margin: 0;
+  border: var(--line);
+  border-radius: var(--radius);
+  background: #f7f4ee;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.about-student-second-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 48% 48%;
+}
+
+@media (max-width: 900px) {
+  .manifesto-narrative-stage {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    width: min(100vw - 24px, 620px);
+    padding-top: 92px;
+  }
+
+  .manifesto-narrative .manifesto-animation-stage {
+    height: min(54svh, 520px);
+    min-height: 360px;
+  }
+
+  .manifesto-narrative .manifesto-logo-system {
+    width: min(96vw, 560px);
+  }
+
+  .manifesto-narrative .manifesto-head {
+    left: -0.069%;
+    top: -1.832%;
+    width: 100.126%;
+  }
+
+  .manifesto-narrative .manifesto-meal {
+    width: min(96vw, 560px);
+  }
+
+  .manifesto-copy-stage {
+    min-height: 330px;
+    padding: 0 0 32px;
+  }
+
+  .manifesto-phase h2 {
+    font-size: clamp(2.65rem, 13vw, 4.4rem);
+  }
+
+  .manifesto-meal-icons {
+    gap: 10px;
+  }
+
+  .manifesto-meal-icons img {
+    width: clamp(58px, 17vw, 78px);
+  }
+
+  .manifesto-meal-icons figcaption {
+    font-size: clamp(0.78rem, 3.4vw, 1rem);
+  }
+
+  .about-icon-row {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .about-icon-row article {
+    height: 150px;
+    padding: 8px;
+  }
+
+  .about-icon-row img {
+    width: clamp(72px, 18vw, 104px);
+    max-width: 82%;
+  }
+
+  .about-icon-row h3 {
+    font-size: clamp(0.9rem, 3.2vw, 1.25rem);
+  }
+
+  .about-student-lower {
+    grid-template-columns: 1fr;
+  }
+
+  .about-student-note {
+    max-width: none;
+  }
+}
+
+@media (max-width: 620px) {
+  .about-icon-row {
+    grid-template-columns: 1fr;
+  }
+
+  .about-icon-row article {
+    height: 152px;
+  }
+
+  .about-icon-row img {
+    width: 92px;
+  }
+
+  .about-student-second-photo {
+    min-height: 430px;
   }
 }

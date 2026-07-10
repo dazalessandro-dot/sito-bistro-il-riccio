@@ -131,3 +131,50 @@ Trattamento:
 - Output usato: `public/assets/images/about-leila-alessandro.jpg`.
 - La foto resta il centro narrativo della sezione About us: grande, con caption reale e affiancata dal dato `70`.
 - Le altre immagini in `immagini persone/` sono state lasciate fuori dal redesign per non creare una gallery casuale e per mantenere la pagina piu editoriale.
+
+## Revisione Prodotti E Nuova Reference About
+
+Colori campionati dagli sfondi prodotto:
+
+- `spicy-oil-clean.jpg`: wrapper `#f7f7f9`, ricavato dallo sfondo chiaro dell'immagine originale.
+- `sundried-tomato-oil-clean.jpg`: wrapper `#f2f0f3`, ricavato dallo sfondo chiaro dell'immagine originale.
+- `pickled-onions-clean.jpg`: wrapper `#f9f9fb`, ricavato dallo sfondo chiaro dell'immagine originale.
+- `iced-tea-clean.jpg`: wrapper `#f8f6f7`, ricavato dallo sfondo chiaro dell'immagine originale.
+- `dattero-ripieno-clean.jpg`: wrapper `#f7f7f7`, ricavato dallo sfondo chiaro dell'immagine originale.
+
+Trattamento prodotti:
+
+- Le versioni con sfondo rimosso/scontornato non sono piu usate nella pagina Prodotti.
+- Gli asset `*-clean.jpg` sono stati ripristinati partendo dalle immagini originali in `prodotti/`, mantenendo lo sfondo fotografico incorporato.
+- Non sono state generate immagini trasparenti: il contenuto visivo originale rimane dentro il file prodotto.
+- Il colore esterno del wrapper e stato campionato e applicato per creare continuita tra immagine e contenitore, senza bordi rettangolari visibili.
+- Dimensioni e posizioni attuali sono state mantenute: oli `690px` di altezza visuale; jar `610px`; tea `520px`; datteri `360px`.
+- I due oli restano normalizzati con la stessa altezza per risultare una coppia coerente.
+
+Reference About:
+
+- Reference analizzata: `interfaccia/WhatsApp Image 2026-07-05 at 19.22.41.jpeg`.
+- Pattern reinterpretato: foto verticale grande, numero `70` come elemento forte, testo breve a destra e tre box piccoli in basso.
+- Immagine usata nella pagina: `public/assets/images/about-leila-alessandro.jpg`, derivata da `immagini persone/a69d2b8c-646a-45a5-a1bc-61cbe87393d8.JPG`.
+
+## Aggiornamento Icone About E Manifesto
+
+Icone About:
+
+- Sorgenti rilette da `interfaccia/icone/`.
+- `Opera_senza_titolo 6.png` -> `public/assets/icons/about-community.png`.
+- `Opera_senza_titolo 1.png` -> `public/assets/icons/about-homemade.png`.
+- `Opera_senza_titolo 7.png` -> `public/assets/icons/about-sustainable.png`.
+- Le icone sono state ritagliate sul contenuto alpha, centrate in canvas trasparente `512x512` e ottimizzate PNG.
+
+Seconda immagine About:
+
+- Sorgente: `immagini persone/IMG_2628.JPG`.
+- Output: `public/assets/images/about-leila-alessandro-2628.jpg`.
+- Trattamento: correzione orientamento EXIF, crop leggero per ridurre vuoto estremo mantenendo le figure intere, resize web e compressione JPEG progressiva.
+
+Animazione Manifesto:
+
+- La cartella `video/` contiene una sequenza di frame SVG `Green_abstract_scribble_drawn_...`.
+- Per il Manifesto e stata mantenuta l'animazione GSAP gia presente basata sugli asset di identita: logo completo, riccio/cervello isolato e testa vuota.
+- Nessun asset originale in `branding/`, `interfaccia/` o `video/` e stato modificato.

@@ -127,3 +127,36 @@ Ricette:
 - Le label numerate delle ricette sono state rimosse.
 - L'overlay ricetta e stato compattato con padding, font e gap piu piccoli.
 - Le immagini dell'overlay usano versioni circolari dedicate e maschera `border-radius: 50%`.
+
+## Iterazione Prodotti E About Reference
+
+Prodotti:
+
+- Corretto il problema di centratura delle immagini prodotto: gli asset web `*-clean.jpg` sono stati ricomposti su canvas uniforme e centrati sul soggetto.
+- Corretta la gerarchia di scala richiesta: `Spicy Oil` e `Sundried Tomato Oil` hanno la stessa altezza visiva; `Pickled Onions` e leggermente piu piccolo; `Iced Tea` e piu piccolo del jar; `Dattero Ripieno` e il piu piccolo.
+- Eliminato lo stacco rettangolare tra immagine e card: il colore dei bordi e stato campionato come `#fbfbf3` e usato come sfondo coerente del contenitore.
+- Rimosso il form inline sotto ogni prodotto.
+- Aggiunto overlay ordine dedicato con nome prodotto, immagine, formato, prezzo, telefono, stepper quantita, conferma locale e chiusura con `Esc`/click fuori.
+- Il test interattivo conferma che non esistono piu `.product-reservation` inline e che il feedback contiene prodotto, quantita e telefono.
+
+About us:
+
+- Il blocco iniziale `About us / Leila, Alessandro e una cucina che arriva in università.` e stato rimosso dal render visibile.
+- La nuova composizione riprende la reference `interfaccia/WhatsApp Image 2026-07-05 at 19.22.41.jpeg`: foto grande verticale a sinistra, testo leggero a destra, numero `70` dominante e tre blocchi piccoli sotto.
+- La reference non e stata inserita come immagine statica: e stata reinterpretata in HTML/CSS.
+- La pagina e ora piu asimmetrica, fotografica e meno basata su un template di titolo/paragrafo/card.
+
+## Iterazione About Icons E Manifesto Narrativo
+
+About us:
+
+- La cartella `interfaccia/icone/` e stata riletta e le tre icone sono state rigenerate dai file aggiornati: mani per `Comunità`, pentola/cucchiaio per `Fatto in casa`, riciclo per `Sostenibile`.
+- La scala delle icone e stata ridotta: ora funzionano come segni piccoli con titolo chiaro, non come grandi illustrazioni dominanti.
+- E stata aggiunta `IMG_2628.JPG` nella parte bassa della sezione, lato opposto rispetto alla foto principale, per creare un ritmo editoriale alternato.
+
+Manifesto:
+
+- Il layout precedente a griglia/card/formula e stato rimosso dal render della pagina.
+- Il Manifesto e stato ripensato come scena unica scroll-driven: animazione a sinistra, testo narrativo a destra su desktop.
+- Il testo cambia seguendo la timeline GSAP: prima fase sul problema del pranzo intorno all'universita, seconda fase su `Cibo funzionale per il cervello`.
+- Su mobile la scena si impila animazione/testo senza overflow orizzontale.
